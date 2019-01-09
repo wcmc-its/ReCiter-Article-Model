@@ -3,6 +3,7 @@
   <groupId>edu.cornell.weill.reciter</groupId>
   <artifactId>ReCiter-Article-Model</artifactId>
   <version>2.0.2-SNAPSHOT</version>
+  <name>ReCiter-Article-Model</name>
   <description>A set of classes representing an identity</description>
     <url>https://github.com/wcmc-its/ReCiter-Article-Model</url>
     
