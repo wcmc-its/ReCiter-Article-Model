@@ -457,14 +457,8 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
         }
     }
 
-    /**
-     * Default Completeness Score Calculation: ReCiterCompleteness
-     *
-     * @param articleId
-     */
     public ReCiterArticle(long articleId) {
         this.articleId = articleId;
-        //this.setArticleCompleteness(new ReCiterCompleteness());
     }
 
     public void setCorrectAuthor(Identity identity) {

@@ -53,11 +53,6 @@ public class ReCiterArticleAuthors {
 		return authors;
 	}
 	
-	/**
-	 * Set the authors.
-	 * 
-	 * @param coAuthors
-	 */
 	public void setAuthors(List<ReCiterAuthor> authors) {
 		this.authors = authors;
 	}

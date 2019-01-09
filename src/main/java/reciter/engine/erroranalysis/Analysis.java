@@ -54,12 +54,7 @@ public class Analysis {
     public Analysis() {
     }
 
-    /**
-     * Assign gold standard to each ReCiterArticle.
-     *
-     * @param reCiterArticles
-     * @param uid
-     */
+
     public static void assignGoldStandard(List<ReCiterArticle> reCiterArticles, List<Long> acceptedPmids, List<Long> rejectedPmids) {
         Set<Long> pmidSet = new HashSet<>();
         if(acceptedPmids != null && acceptedPmids.size() > 0) {
