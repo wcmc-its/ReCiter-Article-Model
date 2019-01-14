@@ -20,7 +20,7 @@ public class ClusteringEvidence {
     private List<Long> emailClustering;
     private List<Long> grantsClustering;
     
-	private enum ClusteringType {
+	public enum ClusteringType {
 		TEPID,
 		CITES,
 		MESHMAJOR,
