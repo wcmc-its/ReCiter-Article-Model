@@ -14,9 +14,18 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @ToString
 @DynamoDBDocument
 public class ClusteringEvidence {
-    private List<String> meshMajors;
-    private String journal;
-    private List<Long> cites = new ArrayList<>();
-    private List<Long> bibliographicCoupling = new ArrayList<>();
-    private List<Long> citedBy = new ArrayList<>();
+    private List<Long> tepidClustering;
+    private List<Long> citesClustering;
+    private List<Long> meshMajorClustering;
+    private List<Long> emailClustering;
+    private List<Long> grantsClustering;
+    
+	private enum ClusteringType {
+		TEPID,
+		CITES,
+		MESHMAJOR,
+		EMAIL,
+		GRANTS
+	}
+    
 }
