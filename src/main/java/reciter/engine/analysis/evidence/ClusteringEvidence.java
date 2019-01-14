@@ -15,10 +15,10 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @DynamoDBDocument
 public class ClusteringEvidence {
     private List<Long> tepidClustering;
-    private List<Long> citesClustering;
-    private List<Long> meshMajorClustering;
     private List<Long> emailClustering;
     private List<Long> grantsClustering;
+    private List<Long> citesClustering;
+    private List<Long> meshMajorClustering;
     
 	public enum ClusteringType {
 		TEPID,
