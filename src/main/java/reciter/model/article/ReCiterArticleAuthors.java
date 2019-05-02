@@ -20,6 +20,7 @@ package reciter.model.article;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class ReCiterArticleAuthors {
 
@@ -27,6 +28,11 @@ public class ReCiterArticleAuthors {
 	 * Authors.
 	 */
 	private List<ReCiterAuthor> authors;
+	
+	/**
+	 * Sanitized Authors.
+	 */
+	private Map<ReCiterAuthor, ReCiterAuthor> sanitizedAuthorMap;
 
 	/**
 	 * Constructs a ReCiterArticleAuthors with an ArrayList.
@@ -77,4 +83,20 @@ public class ReCiterArticleAuthors {
 	public void addAuthor(ReCiterAuthor author) {
 		authors.add(author);
 	}
+
+	/**
+	 * @return the sanitized list of author in Map
+	 */
+	public Map<ReCiterAuthor, ReCiterAuthor> getSanitizedAuthorMap() {
+		return sanitizedAuthorMap;
+	}
+
+	/**
+	 * @param sanitizedAuthorMap
+	 */
+	public void setSanitizedAuthorMap(Map<ReCiterAuthor, ReCiterAuthor> sanitizedAuthorMap) {
+		this.sanitizedAuthorMap = sanitizedAuthorMap;
+	}
+	
+	
 }
