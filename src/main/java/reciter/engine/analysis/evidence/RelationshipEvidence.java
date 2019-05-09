@@ -17,7 +17,8 @@ import reciter.model.identity.KnownRelationship.RelationshipType;
 @ToString
 @DynamoDBDocument
 public class RelationshipEvidence {
-    private AuthorName relationshipName;
+    private AuthorName relationshipNameArticle;
+    private AuthorName relationshipNameIdenity;
     private Set<String> relationshipType;
     private String relationshipMatchType;
     private double relationshipMatchingScore;
