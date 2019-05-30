@@ -116,11 +116,11 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
 		this.totalArticleScoreStandardized = totalArticleScoreStandardized;
 	}
 
-	public List<RelationshipEvidence> getRelationshipEvidences() {
+	public RelationshipEvidence getRelationshipEvidences() {
 		return relationshipEvidences;
 	}
 
-	public void setRelationshipEvidences(List<RelationshipEvidence> relationshipEvidences) {
+	public void setRelationshipEvidences(RelationshipEvidence relationshipEvidences) {
 		this.relationshipEvidences = relationshipEvidences;
 	}
 
@@ -217,7 +217,7 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
 		this.averageClusteringEvidence = averageClusteringEvidence;
 	}
 
-	private List<RelationshipEvidence> relationshipEvidences;
+	private RelationshipEvidence relationshipEvidences;
 
     private String volume;
     private String issue;
@@ -283,11 +283,11 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
         this.educationYearEvidence = educationYearEvidence;
     }
 
-    public List<RelationshipEvidence> getRelationshipEvidence() {
+    public RelationshipEvidence getRelationshipEvidence() {
         return relationshipEvidences;
     }
 
-    public void setRelationshipEvidence(List<RelationshipEvidence> relationshipEvidences) {
+    public void setRelationshipEvidence(RelationshipEvidence relationshipEvidences) {
         this.relationshipEvidences = relationshipEvidences;
     }
 
@@ -391,12 +391,13 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
     	if(this.relationshipEvidences == null) {
     		return 0;
     	}
-    	return this.relationshipEvidences.stream().mapToDouble(relationShipEvidence -> relationShipEvidence.getRelationshipMatchingScore() 
-    			+ relationShipEvidence.getRelationshipVerboseMatchModifierScore()
-    			+ relationShipEvidence.getRelationshipMatchModifierMentorSeniorAuthor()
-    			+ relationShipEvidence.getRelationshipMatchModifierMentor()
-    			+ relationShipEvidence.getRelationshipMatchModifierManagerSeniorAuthor()
-    			+ relationShipEvidence.getRelationshipMatchModifierManager()).sum();
+    	return 0;
+		/*return this.relationshipEvidences.stream().mapToDouble(relationShipEvidence -> relationShipEvidence.getRelationshipMatchingScore() 
+				+ relationShipEvidence.getRelationshipVerboseMatchModifierScore()
+				+ relationShipEvidence.getRelationshipMatchModifierMentorSeniorAuthor()
+				+ relationShipEvidence.getRelationshipMatchModifierMentor()
+				+ relationShipEvidence.getRelationshipMatchModifierManagerSeniorAuthor()
+				+ relationShipEvidence.getRelationshipMatchModifierManager()).sum();*/
     }
     
     

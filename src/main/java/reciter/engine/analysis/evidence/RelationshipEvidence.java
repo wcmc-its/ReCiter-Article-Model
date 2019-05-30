@@ -1,31 +1,24 @@
 package reciter.engine.analysis.evidence;
 
-import java.util.Set;
+import java.util.List;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperFieldModel.DynamoDBAttributeType;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTyped;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import lombok.Data;
 import lombok.ToString;
-import reciter.model.identity.AuthorName;
-import reciter.model.identity.KnownRelationship.RelationshipType;
 
+/**
+ * @author szd2013
+ * This class contains the relationship evidence coming out of the relationship strategy
+ */
 @Data
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ToString
 @DynamoDBDocument
 public class RelationshipEvidence {
-    private AuthorName relationshipNameArticle;
-    private AuthorName relationshipNameIdenity;
-    private Set<String> relationshipType;
-    private String relationshipMatchType;
-    private double relationshipMatchingScore;
-    private double relationshipVerboseMatchModifierScore;
-    private double relationshipMatchModifierMentor;
-    private double relationshipMatchModifierMentorSeniorAuthor;
-    private double relationshipMatchModifierManager;
-    private double relationshipMatchModifierManagerSeniorAuthor;
-    
+	
+	private double relationshipEvidenceTotalScore;
+	private RelationshipNegativeMatch relationshipNegativeMatch; 
+    private List<RelationshipPostiveMatch> relationshipPositiveMatches;
 }
