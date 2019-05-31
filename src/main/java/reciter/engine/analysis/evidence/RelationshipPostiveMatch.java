@@ -16,7 +16,7 @@ import reciter.model.identity.AuthorName;
 public class RelationshipPostiveMatch {
 	
 	private AuthorName relationshipNameArticle;
-    private AuthorName relationshipNameIdenity;
+    private AuthorName relationshipNameIdentity;
     private Set<String> relationshipType;
     private String relationshipMatchType;
     private double relationshipMatchingScore;
