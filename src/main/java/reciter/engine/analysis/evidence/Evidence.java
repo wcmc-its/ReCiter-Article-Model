@@ -19,10 +19,11 @@ public class Evidence {
 	private List<OrganizationalUnitEvidence> organizationalUnitEvidence;
 	private JournalCategoryEvidence journalCategoryEvidence;
 	private AffiliationEvidence affiliationEvidence; 
-	private List<RelationshipEvidence> relationshipEvidence;
+	private RelationshipEvidence relationshipEvidence;
     private GrantEvidence grantEvidence;
     private EducationYearEvidence educationYearEvidence;
     private PersonTypeEvidence personTypeEvidence;
+    private GenderEvidence genderEvidence;
     private ArticleCountEvidence articleCountEvidence;
     private AverageClusteringEvidence averageClusteringEvidence;
     private ClusteringEvidence clusteringEvidence;
