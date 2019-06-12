@@ -21,6 +21,9 @@ package reciter.model.article;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.annotation.Transient;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+
+import lombok.extern.slf4j.Slf4j;
 import reciter.engine.analysis.evidence.AcceptedRejectedEvidence;
 import reciter.engine.analysis.evidence.AffiliationEvidence;
 import reciter.engine.analysis.evidence.ArticleCountEvidence;
@@ -29,6 +32,7 @@ import reciter.engine.analysis.evidence.AverageClusteringEvidence;
 import reciter.engine.analysis.evidence.ClusteringEvidence;
 import reciter.engine.analysis.evidence.EducationYearEvidence;
 import reciter.engine.analysis.evidence.EmailEvidence;
+import reciter.engine.analysis.evidence.GenderEvidence;
 import reciter.engine.analysis.evidence.GrantEvidence;
 import reciter.engine.analysis.evidence.JournalCategoryEvidence;
 import reciter.engine.analysis.evidence.OrganizationalUnitEvidence;
@@ -50,6 +54,7 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
      * Article id: (usually PMID).
      */
     private final long articleId;
+
 
     /**
      * Article title.
@@ -178,7 +183,7 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
     private AuthorName matchingName;
 
     private List<CoCitation> coCitation = new ArrayList<>();
-    private ReCiterAuthor correctAuthor;
+    //private ReCiterAuthor correctAuthor;
     private int correctAuthorRank;
     private int numAuthors;
 
@@ -208,6 +213,7 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
     private ArticleCountEvidence articleCountEvidence;
     private PersonTypeEvidence personTypeEvidence;
     private AverageClusteringEvidence averageClusteringEvidence;
+    private GenderEvidence genderEvidence;
 
     public AverageClusteringEvidence getAverageClusteringEvidence() {
 		return averageClusteringEvidence;
@@ -457,31 +463,32 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
             this.pmids = pmids;
         }
     }
-
+    
+    @JsonCreator
     public ReCiterArticle(long articleId) {
         this.articleId = articleId;
     }
 
-    public void setCorrectAuthor(Identity identity) {
-        int rank = 0;
-        String targetAuthorLastName = identity.getPrimaryName().getLastName();
-        ReCiterArticleAuthors authors = getArticleCoAuthors();
-        if (authors != null) {
-            for (ReCiterAuthor author : authors.getAuthors()) {
-                rank++;
-                String lastName = author.getAuthorName().getLastName();
-                if (StringUtils.equalsIgnoreCase(targetAuthorLastName, lastName)) {
-                    String firstInitial = author.getAuthorName().getFirstInitial();
-                    if (StringUtils.equalsIgnoreCase(firstInitial, identity.getPrimaryName().getFirstInitial())) {
-                        this.correctAuthor = author;
-                        break;
-                    }
-                }
-            }
-        }
-        this.correctAuthorRank = rank;
-        this.numAuthors = authors.getNumberOfAuthors();
-    }
+	/*public void setCorrectAuthor(Identity identity) {
+	    int rank = 0;
+	    String targetAuthorLastName = identity.getPrimaryName().getLastName();
+	    ReCiterArticleAuthors authors = getArticleCoAuthors();
+	    if (authors != null) {
+	        for (ReCiterAuthor author : authors.getAuthors()) {
+	            rank++;
+	            String lastName = author.getAuthorName().getLastName();
+	            if (StringUtils.equalsIgnoreCase(targetAuthorLastName, lastName)) {
+	                String firstInitial = author.getAuthorName().getFirstInitial();
+	                if (StringUtils.equalsIgnoreCase(firstInitial, identity.getPrimaryName().getFirstInitial())) {
+	                    this.correctAuthor = author;
+	                    break;
+	                }
+	            }
+	        }
+	    }
+	    this.correctAuthorRank = rank;
+	    this.numAuthors = authors.getNumberOfAuthors();
+	}*/
 
     @Override
     public int compareTo(ReCiterArticle otherArticle) {
@@ -830,13 +837,13 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
         this.coCitation = coCitation;
     }
 
-    public ReCiterAuthor getCorrectAuthor() {
-        return correctAuthor;
-    }
-
-    public void setCorrectAuthor(ReCiterAuthor correctAuthor) {
-        this.correctAuthor = correctAuthor;
-    }
+	/*public ReCiterAuthor getCorrectAuthor() {
+	    return correctAuthor;
+	}
+	
+	public void setCorrectAuthor(ReCiterAuthor correctAuthor) {
+	    this.correctAuthor = correctAuthor;
+	}*/
 
     public int getCorrectAuthorRank() {
         return correctAuthorRank;
@@ -1004,5 +1011,13 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
 
 	public void setScopusDocId(String scopusDocId) {
 		this.scopusDocId = scopusDocId;
-	}	
+	}
+
+	public GenderEvidence getGenderEvidence() {
+		return genderEvidence;
+	}
+
+	public void setGenderEvidence(GenderEvidence genderEvidence) {
+		this.genderEvidence = genderEvidence;
+	}
 }
