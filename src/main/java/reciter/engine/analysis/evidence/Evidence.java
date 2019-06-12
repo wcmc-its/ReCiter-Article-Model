@@ -23,6 +23,7 @@ public class Evidence {
     private GrantEvidence grantEvidence;
     private EducationYearEvidence educationYearEvidence;
     private PersonTypeEvidence personTypeEvidence;
+    private GenderEvidence genderEvidence;
     private ArticleCountEvidence articleCountEvidence;
     private AverageClusteringEvidence averageClusteringEvidence;
     private ClusteringEvidence clusteringEvidence;
