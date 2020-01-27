@@ -15,4 +15,5 @@ public class AverageClusteringEvidence {
 	private double clusterScoreAverage;
 	private double clusterReliabilityScore;
 	private double clusterScoreModificationOfTotalScore;
+	private long clusterIdentifier; 
 }
