@@ -18,12 +18,15 @@
  *******************************************************************************/
 package reciter.model.article;
 
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.data.annotation.Transient;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 
-import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.annotation.Transient;
+
 import reciter.engine.analysis.evidence.AcceptedRejectedEvidence;
 import reciter.engine.analysis.evidence.AffiliationEvidence;
 import reciter.engine.analysis.evidence.ArticleCountEvidence;
@@ -33,20 +36,15 @@ import reciter.engine.analysis.evidence.ClusteringEvidence;
 import reciter.engine.analysis.evidence.EducationYearEvidence;
 import reciter.engine.analysis.evidence.EmailEvidence;
 import reciter.engine.analysis.evidence.GenderEvidence;
+import reciter.engine.analysis.evidence.Grant;
 import reciter.engine.analysis.evidence.GrantEvidence;
 import reciter.engine.analysis.evidence.JournalCategoryEvidence;
 import reciter.engine.analysis.evidence.OrganizationalUnitEvidence;
 import reciter.engine.analysis.evidence.PersonTypeEvidence;
 import reciter.engine.analysis.evidence.RelationshipEvidence;
 import reciter.model.identity.AuthorName;
-import reciter.model.identity.Identity;
 import reciter.model.identity.KnownRelationship;
 import reciter.model.scopus.ScopusArticle;
-
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 public class ReCiterArticle implements Comparable<ReCiterArticle> {
 
@@ -183,15 +181,15 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
     private AuthorName matchingName;
 
     private List<CoCitation> coCitation = new ArrayList<>();
-    //private ReCiterAuthor correctAuthor;
+
     private int correctAuthorRank;
     private int numAuthors;
 
-    private StringBuffer meshMajorInfo;
-    private StringBuffer citesInfo;
-    private StringBuffer citedByInfo;
-    private StringBuffer coCitationInfo;
-    private StringBuffer journalTitleInfo;
+    private StringBuilder meshMajorInfo;
+    private StringBuilder citesInfo;
+    private StringBuilder citedByInfo;
+    private StringBuilder coCitationInfo;
+    private StringBuilder journalTitleInfo;
 
     private String publicationDateStandardized;
     
@@ -346,42 +344,42 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
 		this.publicationDateDisplay = publicationDateDisplay;
 	}
 
-	public StringBuffer getMeshMajorInfo() {
+	public StringBuilder getMeshMajorInfo() {
         if (meshMajorInfo == null) {
-            meshMajorInfo = new StringBuffer();
+            meshMajorInfo = new StringBuilder();
         }
         return meshMajorInfo;
     }
 
-    public void setMeshMajorInfo(StringBuffer meshMajorInfo) {
+    public void setMeshMajorInfo(StringBuilder meshMajorInfo) {
         this.meshMajorInfo = meshMajorInfo;
     }
 
-    public StringBuffer getCitesInfo() {
+    public StringBuilder getCitesInfo() {
         if (citesInfo == null) {
-            citesInfo = new StringBuffer();
+            citesInfo = new StringBuilder();
         }
         return citesInfo;
     }
 
-    public void setCitesInfo(StringBuffer citesInfo) {
+    public void setCitesInfo(StringBuilder citesInfo) {
         this.citesInfo = citesInfo;
     }
 
-    public StringBuffer getCitedByInfo() {
+    public StringBuilder getCitedByInfo() {
         if (citedByInfo == null) {
-            citedByInfo = new StringBuffer();
+            citedByInfo = new StringBuilder();
         }
         return citedByInfo;
     }
 
-    public void setCitedByInfo(StringBuffer citedByInfo) {
+    public void setCitedByInfo(StringBuilder citedByInfo) {
         this.citedByInfo = citedByInfo;
     }
 
-    public StringBuffer getCoCitationInfo() {
+    public StringBuilder getCoCitationInfo() {
         if (coCitationInfo == null) {
-            coCitationInfo = new StringBuffer();
+            coCitationInfo = new StringBuilder();
         }
         return coCitationInfo;
     }
@@ -390,20 +388,11 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
     	if(this.grantEvidence == null) {
     		return 0;
     	}
-    	return this.grantEvidence.getGrants().stream().mapToDouble(grant -> grant.getGrantMatchScore()).sum();
+    	return this.grantEvidence.getGrants().stream().mapToDouble(Grant::getGrantMatchScore).sum();
     }
     
     public double getRelationshipEvidencesTotalScore() {
-    	if(this.relationshipEvidences == null) {
-    		return 0;
-    	}
     	return 0;
-		/*return this.relationshipEvidences.stream().mapToDouble(relationShipEvidence -> relationShipEvidence.getRelationshipMatchingScore() 
-				+ relationShipEvidence.getRelationshipVerboseMatchModifierScore()
-				+ relationShipEvidence.getRelationshipMatchModifierMentorSeniorAuthor()
-				+ relationShipEvidence.getRelationshipMatchModifierMentor()
-				+ relationShipEvidence.getRelationshipMatchModifierManagerSeniorAuthor()
-				+ relationShipEvidence.getRelationshipMatchModifierManager()).sum();*/
     }
     
     
@@ -424,18 +413,18 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
     			organizationalUnitEvidence.getOrganizationalUnitModifierScore()).sum();
     }
 
-    public void setCoCitationInfo(StringBuffer coCitationInfo) {
+    public void setCoCitationInfo(StringBuilder coCitationInfo) {
         this.coCitationInfo = coCitationInfo;
     }
 
-    public StringBuffer getJournalTitleInfo() {
+    public StringBuilder getJournalTitleInfo() {
         if (journalTitleInfo == null) {
-            journalTitleInfo = new StringBuffer();
+            journalTitleInfo = new StringBuilder();
         }
         return journalTitleInfo;
     }
 
-    public void setJournalTitleInfo(StringBuffer journalTitleInfo) {
+    public void setJournalTitleInfo(StringBuilder journalTitleInfo) {
         this.journalTitleInfo = journalTitleInfo;
     }
 
@@ -468,27 +457,6 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
     public ReCiterArticle(long articleId) {
         this.articleId = articleId;
     }
-
-	/*public void setCorrectAuthor(Identity identity) {
-	    int rank = 0;
-	    String targetAuthorLastName = identity.getPrimaryName().getLastName();
-	    ReCiterArticleAuthors authors = getArticleCoAuthors();
-	    if (authors != null) {
-	        for (ReCiterAuthor author : authors.getAuthors()) {
-	            rank++;
-	            String lastName = author.getAuthorName().getLastName();
-	            if (StringUtils.equalsIgnoreCase(targetAuthorLastName, lastName)) {
-	                String firstInitial = author.getAuthorName().getFirstInitial();
-	                if (StringUtils.equalsIgnoreCase(firstInitial, identity.getPrimaryName().getFirstInitial())) {
-	                    this.correctAuthor = author;
-	                    break;
-	                }
-	            }
-	        }
-	    }
-	    this.correctAuthorRank = rank;
-	    this.numAuthors = authors.getNumberOfAuthors();
-	}*/
 
     @Override
     public int compareTo(ReCiterArticle otherArticle) {
@@ -836,14 +804,6 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
     public void setCoCitation(List<CoCitation> coCitation) {
         this.coCitation = coCitation;
     }
-
-	/*public ReCiterAuthor getCorrectAuthor() {
-	    return correctAuthor;
-	}
-	
-	public void setCorrectAuthor(ReCiterAuthor correctAuthor) {
-	    this.correctAuthor = correctAuthor;
-	}*/
 
     public int getCorrectAuthorRank() {
         return correctAuthorRank;

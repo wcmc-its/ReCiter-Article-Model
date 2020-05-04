@@ -18,16 +18,12 @@
  *******************************************************************************/
 package reciter.engine.erroranalysis;
 
-import reciter.engine.analysis.ReCiterArticleFeature;
-import reciter.model.article.ReCiterArticle;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
-import java.util.stream.Collectors;
+
+import reciter.model.article.ReCiterArticle;
 
 /**
  * Class that performs analysis such as calculating precision and recall.
@@ -38,7 +34,6 @@ public class Analysis {
 
     private double precision;
     private double recall;
-    private double accuracy;
 
     private int truePos;
     private int trueNeg;
@@ -51,16 +46,11 @@ public class Analysis {
     private List<Long> falsePositiveList = new ArrayList<>();
     private List<Long> falseNegativeList = new ArrayList<>();
 
-    public Analysis() {
-    }
-
 
     public static void assignGoldStandard(List<ReCiterArticle> reCiterArticles, List<Long> acceptedPmids, List<Long> rejectedPmids) {
         Set<Long> pmidSet = new HashSet<>();
-        if(acceptedPmids != null && acceptedPmids.size() > 0) {
-	        acceptedPmids.stream().forEach(acceptedPmid -> {
-	            pmidSet.add(acceptedPmid);
-	        });
+        if(acceptedPmids != null && !acceptedPmids.isEmpty()) {
+	        acceptedPmids.stream().forEach(acceptedPmid -> pmidSet.add(acceptedPmid));
         }
 
         for (ReCiterArticle reCiterArticle : reCiterArticles) {
@@ -69,12 +59,10 @@ public class Analysis {
             } 
         }
         if (rejectedPmids != null) {
-            if (pmidSet.size() > 0) {
+            if (!pmidSet.isEmpty()) {
                 pmidSet.clear();
             }
-            rejectedPmids.stream().forEach(rejectedPmid -> {
-                pmidSet.add(rejectedPmid);
-            });
+            rejectedPmids.stream().forEach(rejectedPmid -> pmidSet.add(rejectedPmid));
 
             for (ReCiterArticle reCiterArticle : reCiterArticles) {
                 if (pmidSet.contains(reCiterArticle.getArticleId())) {
@@ -87,34 +75,22 @@ public class Analysis {
 
     public static Analysis performAnalysis(List<Long> finalArticles, List<Long> selectedArticles, List<Long> goldStandardPmids) {
 
-        //Map<Long, ReCiterCluster> finalCluster = reCiterClusterer.getClusters();
-
         Analysis analysis = new Analysis();
-        if(goldStandardPmids != null && goldStandardPmids.size() > 0) {
-
+        if(goldStandardPmids != null && !goldStandardPmids.isEmpty()) {
 	        analysis.setGoldStandardSize(goldStandardPmids.size());
-	
-	        // Combine all articles into a single list.
-	        //List<ReCiterArticle> articleList = reCiterClusterer.getReCiterArticles().stream().filter(reCiterArticle -> reCiterArticle.getTotalArticleScoreStandardized() >= totalStandardzizedArticleScore).collect(Collectors.toList());//new ArrayList<ReCiterArticle>();
-	
 	        analysis.setSelectedClusterSize(selectedArticles.size());
 	
 	            for (Long selectedArticle : selectedArticles) {
-	                StatusEnum statusEnum;
 	                if (finalArticles.contains(selectedArticle) && goldStandardPmids.contains(selectedArticle)) {
 	                    analysis.getTruePositiveList().add(selectedArticle);
-	                    statusEnum = StatusEnum.TRUE_POSITIVE;
 	                } else if (finalArticles.contains(selectedArticle) && !goldStandardPmids.contains(selectedArticle)) {
 	                    analysis.getFalsePositiveList().add(selectedArticle);
-	                    statusEnum = StatusEnum.FALSE_POSITIVE;
 	
 	                } else if (!finalArticles.contains(selectedArticle) && goldStandardPmids.contains(selectedArticle)) {
 	                    analysis.getFalseNegativeList().add(selectedArticle);
-	                    statusEnum = StatusEnum.FALSE_NEGATIVE;
 	
 	                } else {
 	                    analysis.getTrueNegativeList().add(selectedArticle);
-	                    statusEnum = StatusEnum.TRUE_NEGATIVE;
 	                }
 	            }
 	

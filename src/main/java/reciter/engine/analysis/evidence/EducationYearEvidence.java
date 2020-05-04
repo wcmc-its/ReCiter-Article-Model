@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 import lombok.Data;
 import lombok.ToString;
-import reciter.model.identity.Education;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
