@@ -1,10 +1,11 @@
 package reciter.engine.analysis;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import reciter.engine.analysis.evidence.Evidence;
 import reciter.model.pubmed.MedlineCitationJournalISSN;
 
-import java.util.Date;
 import java.util.List;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
@@ -29,6 +30,7 @@ public class ReCiterArticleFeature {
     private ReCiterArticlePublicationType publicationType;
     private Long timesCited;
     private String publicationAbstract;
+    private List<ReCiterArticleFeature.ArticleKeyword> articleKeywords;
     private String scopusDocID;
     private String journalTitleVerbose;
     private List<MedlineCitationJournalISSN> issn;
@@ -39,6 +41,21 @@ public class ReCiterArticleFeature {
     private String issue;
     private String pages;
     private Evidence evidence;
+
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @DynamoDBDocument
+    public static class ArticleKeyword {
+      private String keyword;
+      @DynamoDBTyped(DynamoDBAttributeType.S)
+      private KeywordType type;
+
+      public enum KeywordType {
+        MESH_MAJOR //Mesh Major type
+      }
+
+    }
     
     public enum PublicationFeedback {
 		ACCEPTED, // This publication is in the gold standard
