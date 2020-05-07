@@ -32,6 +32,7 @@ public class ReCiterAuthor {
 	private int rank;
 	private boolean targetAuthor;
 	private String validEmail;
+	private String orcid;
 	
 	public ReCiterAuthor(AuthorName name, String affiliation) {
 		this.name = name;
@@ -69,7 +70,19 @@ public class ReCiterAuthor {
 	public void setRank(int rank) {
 		this.rank = rank;
 	}
-	
-	
-	
+
+    /**
+     * @return String return the orcid
+     */
+    public String getOrcid() {
+        return orcid;
+    }
+
+    /**
+     * @param orcid the orcid to set
+     */
+    public void setOrcid(String orcid) {
+        this.orcid = orcid;
+    }
+
 }

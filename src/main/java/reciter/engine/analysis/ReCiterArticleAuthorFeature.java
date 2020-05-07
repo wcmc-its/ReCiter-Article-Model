@@ -17,4 +17,5 @@ public class ReCiterArticleAuthorFeature {
     private String initials;
     private List<ReCiterArticleAffiliationFeature> affiliations;
     private boolean isTargetAuthor;
+    private String orcid;
 }
