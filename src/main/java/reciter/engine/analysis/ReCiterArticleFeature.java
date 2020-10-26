@@ -31,6 +31,7 @@ public class ReCiterArticleFeature {
     private Long timesCited;
     private String publicationAbstract;
     private List<ReCiterArticleFeature.ArticleKeyword> articleKeywords;
+    private ReCiterFeatureCluster reCiterCluster;
     private String scopusDocID;
     private String journalTitleVerbose;
     private List<MedlineCitationJournalISSN> issn;
@@ -50,6 +51,7 @@ public class ReCiterArticleFeature {
       private String keyword;
       @DynamoDBTyped(DynamoDBAttributeType.S)
       private KeywordType type;
+      private Long count;
 
       public enum KeywordType {
         MESH_MAJOR //Mesh Major type
