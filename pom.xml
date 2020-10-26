@@ -173,12 +173,12 @@
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-java-sdk-dynamodb</artifactId>
-            <version>1.11.478</version>
+            <version>1.11.887</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.16.16</version>
+            <version>1.18.16</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -199,7 +199,7 @@
         <dependency>
     		<groupId>org.springframework.data</groupId>
     		<artifactId>spring-data-commons-core</artifactId>
-    		<version>1.0.0.RELEASE</version>
+    		<version>1.4.1.RELEASE</version>
 		</dependency>
     </dependencies>
     
