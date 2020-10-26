@@ -184,6 +184,7 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
 
     private int correctAuthorRank;
     private int numAuthors;
+    private ReCiterJournalCategory journalCategory;
 
     private StringBuilder meshMajorInfo;
     private StringBuilder citesInfo;
@@ -235,6 +236,14 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
 
     public void setDoi(String doi) {
         this.doi = doi;
+    }
+
+    public ReCiterJournalCategory getJournalCategory() {
+        return journalCategory;
+    }
+
+    public void setJournalCategory(ReCiterJournalCategory journalCategory) {
+        this.journalCategory = journalCategory;
     }
 
     public String getPages() {
