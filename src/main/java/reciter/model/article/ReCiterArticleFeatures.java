@@ -15,9 +15,9 @@ import lombok.Data;
 public class ReCiterArticleFeatures {
 	
 	private String journalName;
-	private List<String> coAuthors = new ArrayList<String>();
-	private List<String> meshMajor = new ArrayList<String>();
-	private Set<Integer> affiliationIds = new HashSet<Integer>();
+	private List<String> coAuthors = new ArrayList<>();
+	private List<String> meshMajor = new ArrayList<>();
+	private Set<Integer> affiliationIds = new HashSet<>();
 	private int featureCount = 0;
 
 }
