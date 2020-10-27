@@ -1,11 +1,9 @@
 package reciter.engine.analysis;
 
-import lombok.Data;
-
-import java.util.List;
-
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
 import com.fasterxml.jackson.annotation.JsonInclude;
+
+import lombok.Data;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
@@ -15,7 +13,8 @@ public class ReCiterArticleAuthorFeature {
     private String lastName;
     private String firstName;
     private String initials;
-    private List<ReCiterArticleAffiliationFeature> affiliations;
+    private ReCiterArticleAffiliationFeature affiliations;
     private boolean isTargetAuthor;
+    private String email;
     private String orcid;
 }
