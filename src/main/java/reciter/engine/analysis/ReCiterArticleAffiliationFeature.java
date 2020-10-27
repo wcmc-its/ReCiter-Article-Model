@@ -31,13 +31,13 @@ public class ReCiterArticleAffiliationFeature {
     /**
      * List of affiliations for the author
      */
-    private List<ReCiterArticleAffiliationInstitution> affiliationInstitutions;
+    private List<ReCiterArticleAffiliationFeature.ReCiterArticleAffiliationInstitution> affiliationInstitutions;
 
     @Data
     @AllArgsConstructor
     @NoArgsConstructor
     @DynamoDBDocument
-    public class ReCiterArticleAffiliationInstitution {
+    public static class ReCiterArticleAffiliationInstitution {
         /**
          * Affiliation Label from SCOPUS
          */
