@@ -29,6 +29,8 @@ public class ReCiterFeature {
     private Double recall;
     private List<Long> inGoldStandardButNotRetrieved;
     private int countSuggestedArticles;
+    private long countPendingArticles;
+    private List<ReCiterArticleFeature.ArticleKeyword> articleKeywordsAcceptedArticles;
     private List<ReCiterArticleFeature> reCiterArticleFeatures;
 
 }
