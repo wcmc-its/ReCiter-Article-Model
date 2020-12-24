@@ -64,11 +64,11 @@
 	        <plugins>
 	            <plugin>
 	                <artifactId>maven-compiler-plugin</artifactId>
-	                <version>3.3</version>
+	                <version>3.8.1</version>
 	                <configuration>
 	                    <encoding>UTF-8</encoding>
-						<source>1.8</source>
-						<target>1.8</target>
+						<source>${java.version}</source>
+						<target>${java.version}</target>
 						<showDeprecation>true</showDeprecation>
 	                </configuration>
 	            </plugin>
@@ -173,7 +173,7 @@
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-java-sdk-dynamodb</artifactId>
-            <version>1.11.887</version>
+            <version>1.11.925</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
