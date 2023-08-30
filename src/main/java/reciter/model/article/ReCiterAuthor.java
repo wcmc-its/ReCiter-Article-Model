@@ -33,6 +33,7 @@ public class ReCiterAuthor {
 	private boolean targetAuthor;
 	private String validEmail;
 	private String orcid;
+	private String equalContrib;
 	
 	public ReCiterAuthor(AuthorName name, String affiliation) {
 		this.name = name;
@@ -84,5 +85,13 @@ public class ReCiterAuthor {
     public void setOrcid(String orcid) {
         this.orcid = orcid;
     }
+    public String getEqualContrib() {
+		return equalContrib;
+	}
+
+	public void setEqualContrib(String equalContrib) {
+		this.equalContrib = equalContrib;
+	}
+
 
 }
