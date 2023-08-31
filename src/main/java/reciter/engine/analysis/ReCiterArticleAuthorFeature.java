@@ -17,4 +17,5 @@ public class ReCiterArticleAuthorFeature {
     private boolean isTargetAuthor;
     private String email;
     private String orcid;
+    private String equalContrib;
 }
