@@ -989,4 +989,25 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
 	public void setGenderEvidence(GenderEvidence genderEvidence) {
 		this.genderEvidence = genderEvidence;
 	}
+	//Feedback journal level scoring
+	private double feedbackScoreJournal;
+	//Feedback Orcid level scoring
+	private double feedbackScoreOrcid;
+	
+	public double getFeedbackScoreJournal() {
+		return feedbackScoreJournal;
+	}
+
+	public void setFeedbackScoreJournal(double feedbackScoreJournal) {
+		this.feedbackScoreJournal = feedbackScoreJournal;
+	}
+	public void setFeedbackScoreOrcid(double feedbackScoreOrcid)
+	{
+		this.feedbackScoreOrcid = feedbackScoreOrcid;
+	}
+	public double getFeedbackScoreOrcid()
+	{
+		return feedbackScoreOrcid;
+	}
+	
 }
