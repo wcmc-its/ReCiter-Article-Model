@@ -993,6 +993,31 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
 	private double feedbackScoreJournal;
 	//Feedback Orcid level scoring
 	private double feedbackScoreOrcid;
+	//Feedback Year level scoring
+	private double feedbackScoreYear;
+	//Feedback Email level scoring
+	private double feedbackScoreEmail;
+	//Feedback Journal Domain level scoring
+	private double feedbackScoreJournalDomain;
+	//Feedback Journal Field level scoring
+	private double feedbackScoreJournalField;
+	//Feedback Journal Sub Field level scoring
+	private double feedbackScoreJournalSubField;
+	//Feedback Keyword level scoring
+    private double feedbackScoreKeyword;
+    //Feedback TargetAuthorName level scoring
+    private double feedbackScoreTargetAuthorName;
+    //Feedback TargetAuthorName level scoring
+    private double feedbackScoreInstitution;
+    //Feedback TargetAuthorName level scoring
+    private double feedbackScoreOrganization;
+  //Feedback CoAuthorName level scoring
+    private double feedbackScoreCoAuthorName;
+  //Feedback OrcidCoAuthorName level scoring
+    private double feedbackScoreOrcidCoAuthor;
+    //Feedback OrcidCoAuthorName level scoring
+    private double feedbackScoreCitedPmid;
+		
 	
 	public double getFeedbackScoreJournal() {
 		return feedbackScoreJournal;
@@ -1008,6 +1033,102 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
 	public double getFeedbackScoreOrcid()
 	{
 		return feedbackScoreOrcid;
+	}
+
+	public double getFeedbackScoreYear() {
+		return feedbackScoreYear;
+	}
+
+	public void setFeedbackScoreYear(double feedbackScoreYear) {
+		this.feedbackScoreYear = feedbackScoreYear;
+	}
+
+	public double getFeedbackScoreEmail() {
+		return feedbackScoreEmail;
+	}
+
+	public void setFeedbackScoreEmail(double feedbackScoreEmail) {
+		this.feedbackScoreEmail = feedbackScoreEmail;
+	}
+
+	public double getFeedbackScoreJournalDomain() {
+		return feedbackScoreJournalDomain;
+	}
+
+	public void setFeedbackScoreJournalDomain(double feedbackScoreJournalDomain) {
+		this.feedbackScoreJournalDomain = feedbackScoreJournalDomain;
+	}
+
+	public double getFeedbackScoreJournalField() {
+		return feedbackScoreJournalField;
+	}
+
+	public void setFeedbackScoreJournalField(double feedbackScoreJournalField) {
+		this.feedbackScoreJournalField = feedbackScoreJournalField;
+	}
+
+	public double getFeedbackScoreJournalSubField() {
+		return feedbackScoreJournalSubField;
+	}
+
+	public void setFeedbackScoreJournalSubField(double feedbackScoreJournalSubField) {
+		this.feedbackScoreJournalSubField = feedbackScoreJournalSubField;
+	}
+
+	public double getFeedbackScoreKeyword() {
+		return feedbackScoreKeyword;
+	}
+
+	public void setFeedbackScoreKeyword(double feedbackScoreKeyword) {
+		this.feedbackScoreKeyword = feedbackScoreKeyword;
+	}
+
+	public double getFeedbackScoreTargetAuthorName() {
+		return feedbackScoreTargetAuthorName;
+	}
+
+	public void setFeedbackScoreTargetAuthorName(double feedbackScoreTargetAuthorName) {
+		this.feedbackScoreTargetAuthorName = feedbackScoreTargetAuthorName;
+	}
+
+	public double getFeedbackScoreInstitution() {
+		return feedbackScoreInstitution;
+	}
+
+	public void setFeedbackScoreInstitution(double feedbackScoreInstitution) {
+		this.feedbackScoreInstitution = feedbackScoreInstitution;
+	}
+
+	public double getFeedbackScoreOrganization() {
+		return feedbackScoreOrganization;
+	}
+
+	public void setFeedbackScoreOrganization(double feedbackScoreOrganization) {
+		this.feedbackScoreOrganization = feedbackScoreOrganization;
+	}
+
+	public double getFeedbackScoreCoAuthorName() {
+		return feedbackScoreCoAuthorName;
+	}
+
+	public void setFeedbackScoreCoAuthorName(double feedbackScoreCoAuthorName) {
+		this.feedbackScoreCoAuthorName = feedbackScoreCoAuthorName;
+	}
+
+	public double getFeedbackScoreOrcidCoAuthor() {
+		return feedbackScoreOrcidCoAuthor;
+	}
+
+	public void setFeedbackScoreOrcidCoAuthor(double feedbackScoreOrcidCoAuthor) {
+		this.feedbackScoreOrcidCoAuthor = feedbackScoreOrcidCoAuthor;
+	}
+
+	public double getFeedbackScoreCitedPmid() {
+		return feedbackScoreCitedPmid;
+	}
+
+	public void setFeedbackScoreCitedPmid(double feedbackScoreCitedPmid) {
+		this.feedbackScoreCitedPmid = feedbackScoreCitedPmid;
 	}
 	
 }
