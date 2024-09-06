@@ -19,8 +19,10 @@
 package reciter.model.article;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -89,7 +91,41 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
      */
     @Transient
     private ScopusArticle scopusArticle;
-
+    
+    @Transient
+    private ReCiterFeedbackScoreArticle feedbackScoreArticle;
+    
+    //Feedback final scores
+    private double coAuthorNameFeedbackScore;
+    private double keywordFeedackScore;
+    private double journalFeedackScore;
+    private double journalDomainFeedbackScore;
+    private double journalFieldFeedbackScore;
+    private double journalSubFieldFeedbackScore;
+    private double orcidFeedbackScore;
+    private double orcidCoAuthorFeedbackScore;
+    private double citesFeedbackScore;
+    private double emailFeedbackScore;
+    private double institutionFeedbackScore;
+    private double organizationFeedbackScore;
+    private double targetAuthorNameFeedbackScore;
+    private double yearFeedbackScore;
+    private String exportedCoAuthorNameFeedbackScore;
+    private String exportedKeywordFeedackScore;
+    private String exportedJournalFeedackScore;
+    private String exportedJournalDomainFeedbackScore;
+    private String exportedJournalFieldFeedbackScore;
+    private String exportedJournalSubFieldFeedbackScore;
+    private String exportedOrcidFeedbackScore;
+    private String exportedOrcidCoAuthorFeedbackScore;
+    private String exportedCitesFeedbackScore;
+    private String exportedEmailFeedbackScore;
+    private String exportedInstitutionFeedbackScore;
+    private String exportedOrganizationFeedbackScore;
+    private String exportedTargetAuthorNameFeedbackScore;
+    private String exportedYearFeedbackScore; 
+    
+    
     /**
      * Grant List.
 
@@ -989,146 +1025,234 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
 	public void setGenderEvidence(GenderEvidence genderEvidence) {
 		this.genderEvidence = genderEvidence;
 	}
-	//Feedback journal level scoring
-	private double feedbackScoreJournal;
-	//Feedback Orcid level scoring
-	private double feedbackScoreOrcid;
-	//Feedback Year level scoring
-	private double feedbackScoreYear;
-	//Feedback Email level scoring
-	private double feedbackScoreEmail;
-	//Feedback Journal Domain level scoring
-	private double feedbackScoreJournalDomain;
-	//Feedback Journal Field level scoring
-	private double feedbackScoreJournalField;
-	//Feedback Journal Sub Field level scoring
-	private double feedbackScoreJournalSubField;
-	//Feedback Keyword level scoring
-    private double feedbackScoreKeyword;
-    //Feedback TargetAuthorName level scoring
-    private double feedbackScoreTargetAuthorName;
-    //Feedback TargetAuthorName level scoring
-    private double feedbackScoreInstitution;
-    //Feedback TargetAuthorName level scoring
-    private double feedbackScoreOrganization;
-  //Feedback CoAuthorName level scoring
-    private double feedbackScoreCoAuthorName;
-  //Feedback OrcidCoAuthorName level scoring
-    private double feedbackScoreOrcidCoAuthor;
-    //Feedback OrcidCoAuthorName level scoring
-    private double feedbackScoreCitedPmid;
-		
-	
-	public double getFeedbackScoreJournal() {
-		return feedbackScoreJournal;
+	public ReCiterFeedbackScoreArticle getFeedbackScoreArticle() {
+		return feedbackScoreArticle;
 	}
 
-	public void setFeedbackScoreJournal(double feedbackScoreJournal) {
-		this.feedbackScoreJournal = feedbackScoreJournal;
+	public void setFeedbackScoreArticle(ReCiterFeedbackScoreArticle feedbackScoreArticle) {
+		this.feedbackScoreArticle = feedbackScoreArticle;
 	}
-	public void setFeedbackScoreOrcid(double feedbackScoreOrcid)
-	{
-		this.feedbackScoreOrcid = feedbackScoreOrcid;
-	}
-	public double getFeedbackScoreOrcid()
-	{
-		return feedbackScoreOrcid;
+	public double getCoAuthorNameFeedbackScore() {
+		return coAuthorNameFeedbackScore;
 	}
 
-	public double getFeedbackScoreYear() {
-		return feedbackScoreYear;
+	public void setCoAuthorNameFeedbackScore(double coAuthorNameFeedbackScore) {
+		this.coAuthorNameFeedbackScore = coAuthorNameFeedbackScore;
 	}
 
-	public void setFeedbackScoreYear(double feedbackScoreYear) {
-		this.feedbackScoreYear = feedbackScoreYear;
+	public double getKeywordFeedackScore() {
+		return keywordFeedackScore;
 	}
 
-	public double getFeedbackScoreEmail() {
-		return feedbackScoreEmail;
+	public void setKeywordFeedackScore(double keywordFeedackScore) {
+		this.keywordFeedackScore = keywordFeedackScore;
 	}
 
-	public void setFeedbackScoreEmail(double feedbackScoreEmail) {
-		this.feedbackScoreEmail = feedbackScoreEmail;
+	public double getJournalDomainFeedbackScore() {
+		return journalDomainFeedbackScore;
 	}
 
-	public double getFeedbackScoreJournalDomain() {
-		return feedbackScoreJournalDomain;
+	public void setJournalDomainFeedbackScore(double journalDomainFeedbackScore) {
+		this.journalDomainFeedbackScore = journalDomainFeedbackScore;
 	}
 
-	public void setFeedbackScoreJournalDomain(double feedbackScoreJournalDomain) {
-		this.feedbackScoreJournalDomain = feedbackScoreJournalDomain;
+	public double getJournalFieldFeedbackScore() {
+		return journalFieldFeedbackScore;
 	}
 
-	public double getFeedbackScoreJournalField() {
-		return feedbackScoreJournalField;
+	public void setJournalFieldFeedbackScore(double journalFieldFeedbackScore) {
+		this.journalFieldFeedbackScore = journalFieldFeedbackScore;
 	}
 
-	public void setFeedbackScoreJournalField(double feedbackScoreJournalField) {
-		this.feedbackScoreJournalField = feedbackScoreJournalField;
+	public double getJournalSubFieldFeedbackScore() {
+		return journalSubFieldFeedbackScore;
 	}
 
-	public double getFeedbackScoreJournalSubField() {
-		return feedbackScoreJournalSubField;
+	public void setJournalSubFieldFeedbackScore(double journalSubFieldFeedbackScore) {
+		this.journalSubFieldFeedbackScore = journalSubFieldFeedbackScore;
 	}
 
-	public void setFeedbackScoreJournalSubField(double feedbackScoreJournalSubField) {
-		this.feedbackScoreJournalSubField = feedbackScoreJournalSubField;
+	public double getOrcidFeedbackScore() {
+		return orcidFeedbackScore;
 	}
 
-	public double getFeedbackScoreKeyword() {
-		return feedbackScoreKeyword;
+	public void setOrcidFeedbackScore(double orcidFeedbackScore) {
+		this.orcidFeedbackScore = orcidFeedbackScore;
 	}
 
-	public void setFeedbackScoreKeyword(double feedbackScoreKeyword) {
-		this.feedbackScoreKeyword = feedbackScoreKeyword;
+	public double getOrcidCoAuthorFeedbackScore() {
+		return orcidCoAuthorFeedbackScore;
 	}
 
-	public double getFeedbackScoreTargetAuthorName() {
-		return feedbackScoreTargetAuthorName;
+	public void setOrcidCoAuthorFeedbackScore(double orcidCoAuthorFeedbackScore) {
+		this.orcidCoAuthorFeedbackScore = orcidCoAuthorFeedbackScore;
 	}
 
-	public void setFeedbackScoreTargetAuthorName(double feedbackScoreTargetAuthorName) {
-		this.feedbackScoreTargetAuthorName = feedbackScoreTargetAuthorName;
+	public double getCitesFeedbackScore() {
+		return citesFeedbackScore;
 	}
 
-	public double getFeedbackScoreInstitution() {
-		return feedbackScoreInstitution;
+	public void setCitesFeedbackScore(double citesFeedbackScore) {
+		this.citesFeedbackScore = citesFeedbackScore;
 	}
 
-	public void setFeedbackScoreInstitution(double feedbackScoreInstitution) {
-		this.feedbackScoreInstitution = feedbackScoreInstitution;
+	public double getEmailFeedbackScore() {
+		return emailFeedbackScore;
 	}
 
-	public double getFeedbackScoreOrganization() {
-		return feedbackScoreOrganization;
+	public void setEmailFeedbackScore(double emailFeedbackScore) {
+		this.emailFeedbackScore = emailFeedbackScore;
 	}
 
-	public void setFeedbackScoreOrganization(double feedbackScoreOrganization) {
-		this.feedbackScoreOrganization = feedbackScoreOrganization;
+	public double getInstitutionFeedbackScore() {
+		return institutionFeedbackScore;
 	}
 
-	public double getFeedbackScoreCoAuthorName() {
-		return feedbackScoreCoAuthorName;
+	public void setInstitutionFeedbackScore(double institutionFeedbackScore) {
+		this.institutionFeedbackScore = institutionFeedbackScore;
 	}
 
-	public void setFeedbackScoreCoAuthorName(double feedbackScoreCoAuthorName) {
-		this.feedbackScoreCoAuthorName = feedbackScoreCoAuthorName;
+	public double getOrganizationFeedbackScore() {
+		return organizationFeedbackScore;
 	}
 
-	public double getFeedbackScoreOrcidCoAuthor() {
-		return feedbackScoreOrcidCoAuthor;
+	public void setOrganizationFeedbackScore(double organizationFeedbackScore) {
+		this.organizationFeedbackScore = organizationFeedbackScore;
 	}
 
-	public void setFeedbackScoreOrcidCoAuthor(double feedbackScoreOrcidCoAuthor) {
-		this.feedbackScoreOrcidCoAuthor = feedbackScoreOrcidCoAuthor;
+	public double getTargetAuthorNameFeedbackScore() {
+		return targetAuthorNameFeedbackScore;
 	}
 
-	public double getFeedbackScoreCitedPmid() {
-		return feedbackScoreCitedPmid;
+	public void setTargetAuthorNameFeedbackScore(double targetAuthorNameFeedbackScore) {
+		this.targetAuthorNameFeedbackScore = targetAuthorNameFeedbackScore;
 	}
 
-	public void setFeedbackScoreCitedPmid(double feedbackScoreCitedPmid) {
-		this.feedbackScoreCitedPmid = feedbackScoreCitedPmid;
+	public double getYearFeedbackScore() {
+		return yearFeedbackScore;
 	}
-	
+
+	public void setYearFeedbackScore(double yearFeedbackScore) {
+		this.yearFeedbackScore = yearFeedbackScore;
+	}
+
+	public double getJournalFeedackScore() {
+		return journalFeedackScore;
+	}
+
+	public void setJournalFeedackScore(double journalFeedackScore) {
+		this.journalFeedackScore = journalFeedackScore;
+	}
+
+	public String getExportedCoAuthorNameFeedbackScore() {
+		return exportedCoAuthorNameFeedbackScore;
+	}
+
+	public void setExportedCoAuthorNameFeedbackScore(String exportedCoAuthorNameFeedbackScore) {
+		this.exportedCoAuthorNameFeedbackScore = exportedCoAuthorNameFeedbackScore;
+	}
+
+	public String getExportedKeywordFeedackScore() {
+		return exportedKeywordFeedackScore;
+	}
+
+	public void setExportedKeywordFeedackScore(String exportedKeywordFeedackScore) {
+		this.exportedKeywordFeedackScore = exportedKeywordFeedackScore;
+	}
+
+	public String getExportedJournalFeedackScore() {
+		return exportedJournalFeedackScore;
+	}
+
+	public void setExportedJournalFeedackScore(String exportedJournalFeedackScore) {
+		this.exportedJournalFeedackScore = exportedJournalFeedackScore;
+	}
+
+	public String getExportedJournalDomainFeedbackScore() {
+		return exportedJournalDomainFeedbackScore;
+	}
+
+	public void setExportedJournalDomainFeedbackScore(String exportedJournalDomainFeedbackScore) {
+		this.exportedJournalDomainFeedbackScore = exportedJournalDomainFeedbackScore;
+	}
+
+	public String getExportedJournalFieldFeedbackScore() {
+		return exportedJournalFieldFeedbackScore;
+	}
+
+	public void setExportedJournalFieldFeedbackScore(String exportedJournalFieldFeedbackScore) {
+		this.exportedJournalFieldFeedbackScore = exportedJournalFieldFeedbackScore;
+	}
+
+	public String getExportedJournalSubFieldFeedbackScore() {
+		return exportedJournalSubFieldFeedbackScore;
+	}
+
+	public void setExportedJournalSubFieldFeedbackScore(String exportedJournalSubFieldFeedbackScore) {
+		this.exportedJournalSubFieldFeedbackScore = exportedJournalSubFieldFeedbackScore;
+	}
+
+	public String getExportedOrcidFeedbackScore() {
+		return exportedOrcidFeedbackScore;
+	}
+
+	public void setExportedOrcidFeedbackScore(String exportedOrcidFeedbackScore) {
+		this.exportedOrcidFeedbackScore = exportedOrcidFeedbackScore;
+	}
+
+	public String getExportedOrcidCoAuthorFeedbackScore() {
+		return exportedOrcidCoAuthorFeedbackScore;
+	}
+
+	public void setExportedOrcidCoAuthorFeedbackScore(String exportedOrcidCoAuthorFeedbackScore) {
+		this.exportedOrcidCoAuthorFeedbackScore = exportedOrcidCoAuthorFeedbackScore;
+	}
+
+	public String getExportedCitesFeedbackScore() {
+		return exportedCitesFeedbackScore;
+	}
+
+	public void setExportedCitesFeedbackScore(String exportedCitesFeedbackScore) {
+		this.exportedCitesFeedbackScore = exportedCitesFeedbackScore;
+	}
+
+	public String getExportedEmailFeedbackScore() {
+		return exportedEmailFeedbackScore;
+	}
+
+	public void setExportedEmailFeedbackScore(String exportedEmailFeedbackScore) {
+		this.exportedEmailFeedbackScore = exportedEmailFeedbackScore;
+	}
+
+	public String getExportedInstitutionFeedbackScore() {
+		return exportedInstitutionFeedbackScore;
+	}
+
+	public void setExportedInstitutionFeedbackScore(String exportedInstitutionFeedbackScore) {
+		this.exportedInstitutionFeedbackScore = exportedInstitutionFeedbackScore;
+	}
+
+	public String getExportedOrganizationFeedbackScore() {
+		return exportedOrganizationFeedbackScore;
+	}
+
+	public void setExportedOrganizationFeedbackScore(String exportedOrganizationFeedbackScore) {
+		this.exportedOrganizationFeedbackScore = exportedOrganizationFeedbackScore;
+	}
+
+	public String getExportedTargetAuthorNameFeedbackScore() {
+		return exportedTargetAuthorNameFeedbackScore;
+	}
+
+	public void setExportedTargetAuthorNameFeedbackScore(String exportedTargetAuthorNameFeedbackScore) {
+		this.exportedTargetAuthorNameFeedbackScore = exportedTargetAuthorNameFeedbackScore;
+	}
+
+	public String getExportedYearFeedbackScore() {
+		return exportedYearFeedbackScore;
+	}
+
+	public void setExportedYearFeedbackScore(String exportedYearFeedbackScore) {
+		this.exportedYearFeedbackScore = exportedYearFeedbackScore;
+	}
 }

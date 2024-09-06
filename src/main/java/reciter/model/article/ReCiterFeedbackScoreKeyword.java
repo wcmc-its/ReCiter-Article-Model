@@ -2,17 +2,10 @@ package reciter.model.article;
 
 import lombok.Data;
 
-@Data
-public class ReCiterFeedbackScoreKeyword {
 
-	private String uid;
-	private long articleId;
-	private int countAccepted;
-	private int countRejected;
-	private int countNull;
-	private double scoreAll;
-	private double scoreWithout1Accepted;
-	private double scoreWithout1Rejected;
-	private int goldStandard;
+@Data
+public class ReCiterFeedbackScoreKeyword /*extends ReCiterFeedbackScoreArticle*/{
+
 	private String keyword;
+	private double feedbackScoreKeyword;
 }

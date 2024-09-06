@@ -3,17 +3,10 @@ package reciter.model.article;
 import lombok.Data;
 
 @Data
-public class ReCiterFeedbackScoreOrcidCoAuthorName {
+public class ReCiterFeedbackScoreOrcidCoAuthorName  /*extends ReCiterFeedbackScoreArticle*/{
 
-	private String uid;
-	private long articleId;
-	private int countAccepted;
-	private int countRejected;
-	private int countNull;
-	private double scoreAll;
-	private double scoreWithout1Accepted;
-	private double scoreWithout1Rejected;
-	private int goldStandard;
 	private String coAuthorOrcid;
-	
+	private double feedbackScoreCoAuthorOrcid;
+	private double sumAccepted;
+	private double sumRejected;
 }

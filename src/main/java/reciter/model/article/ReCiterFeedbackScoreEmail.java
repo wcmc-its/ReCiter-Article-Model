@@ -5,17 +5,9 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
-public class ReCiterFeedbackScoreEmail {
+public class ReCiterFeedbackScoreEmail /* extends ReCiterFeedbackScoreArticle*/ {
 
-	private String personIdentifier;
-	private long articleId;
-	private int countAccepted;
-	private int countRejected;
-	private int countNull;
-	private double scoreAll;
-	private double scoreWithout1Accepted;
-	private double scoreWithout1Rejected;
-	private int goldStandard;
 	private String email;
+	private double feedbackScoreEmail;
 	
 }
