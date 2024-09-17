@@ -18,5 +18,6 @@ public class ReCiterArticleFeedbackScore {
 	private double feedbackScore;
 	private int goldStandard;
 	private String exportedFeedbackScore;
+	private String feedbackScoreType;
 }
 

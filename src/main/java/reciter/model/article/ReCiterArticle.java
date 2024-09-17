@@ -92,9 +92,6 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
     @Transient
     private ScopusArticle scopusArticle;
     
-    @Transient
-    private ReCiterFeedbackScoreArticle feedbackScoreArticle;
-    
     //Feedback final scores
     private double coAuthorNameFeedbackScore;
     private double keywordFeedackScore;
@@ -124,6 +121,7 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
     private String exportedOrganizationFeedbackScore;
     private String exportedTargetAuthorNameFeedbackScore;
     private String exportedYearFeedbackScore; 
+    private Map<String, List<ReCiterArticleFeedbackScore>> articleFeedbackScoresMap;
     
     
     /**
@@ -501,6 +499,7 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
     @JsonCreator
     public ReCiterArticle(long articleId) {
         this.articleId = articleId;
+        this.articleFeedbackScoresMap = new HashMap<>();
     }
 
     @Override
@@ -1025,13 +1024,7 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
 	public void setGenderEvidence(GenderEvidence genderEvidence) {
 		this.genderEvidence = genderEvidence;
 	}
-	public ReCiterFeedbackScoreArticle getFeedbackScoreArticle() {
-		return feedbackScoreArticle;
-	}
-
-	public void setFeedbackScoreArticle(ReCiterFeedbackScoreArticle feedbackScoreArticle) {
-		this.feedbackScoreArticle = feedbackScoreArticle;
-	}
+	
 	public double getCoAuthorNameFeedbackScore() {
 		return coAuthorNameFeedbackScore;
 	}
@@ -1254,5 +1247,13 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
 
 	public void setExportedYearFeedbackScore(String exportedYearFeedbackScore) {
 		this.exportedYearFeedbackScore = exportedYearFeedbackScore;
+	}
+
+	public Map<String, List<ReCiterArticleFeedbackScore>> getArticleFeedbackScoresMap() {
+		return articleFeedbackScoresMap;
+	}
+
+	public void addArticleFeedbackScoresMap(Map<String, List<ReCiterArticleFeedbackScore>> articleFeedbackScoresMap) {
+		this.articleFeedbackScoresMap.putAll(articleFeedbackScoresMap); 
 	}
 }
