@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>edu.cornell.weill.reciter</groupId>
   <artifactId>reciter-article-model</artifactId>
-  <version>2.0.18-SNAPSHOT</version>
+  <version>2.0.18</version>
   <name>ReCiter-Article-Model</name>
   <description>A set of classes representing an identity</description>
     <url>https://github.com/wcmc-its/ReCiter-Article-Model</url>
