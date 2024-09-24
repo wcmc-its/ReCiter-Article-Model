@@ -121,7 +121,7 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
     private String exportedOrganizationFeedbackScore;
     private String exportedTargetAuthorNameFeedbackScore;
     private String exportedYearFeedbackScore; 
-    private Map<String, List<ReCiterArticleFeedbackScore>> articleFeedbackScoresMap;
+    private List<Map<String,List<ReCiterArticleFeedbackScore>>> articleFeedbackScoresMapList;
     
     
     /**
@@ -499,7 +499,7 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
     @JsonCreator
     public ReCiterArticle(long articleId) {
         this.articleId = articleId;
-        this.articleFeedbackScoresMap = new HashMap<>();
+        this.articleFeedbackScoresMapList = new ArrayList<>();
     }
 
     @Override
@@ -1249,11 +1249,12 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
 		this.exportedYearFeedbackScore = exportedYearFeedbackScore;
 	}
 
-	public Map<String, List<ReCiterArticleFeedbackScore>> getArticleFeedbackScoresMap() {
-		return articleFeedbackScoresMap;
+	public List<Map<String,List<ReCiterArticleFeedbackScore>>> getArticleFeedbackScoresMap() {
+		return articleFeedbackScoresMapList;
 	}
 
-	public void addArticleFeedbackScoresMap(Map<String, List<ReCiterArticleFeedbackScore>> articleFeedbackScoresMap) {
-		this.articleFeedbackScoresMap.putAll(articleFeedbackScoresMap); 
+	public void addArticleFeedbackScoresMap(Map<String, List<ReCiterArticleFeedbackScore>> articleFeedbackScoresMapList) {
+		this.articleFeedbackScoresMapList.add(articleFeedbackScoresMapList); 
+	
 	}
 }
