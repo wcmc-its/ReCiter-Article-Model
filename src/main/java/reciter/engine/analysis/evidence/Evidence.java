@@ -27,4 +27,5 @@ public class Evidence {
     private ArticleCountEvidence articleCountEvidence;
     private AverageClusteringEvidence averageClusteringEvidence;
     private ClusteringEvidence clusteringEvidence;
+    private FeedbackEvidence feedbackEvidence;
 }
