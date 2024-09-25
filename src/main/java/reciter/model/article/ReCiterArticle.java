@@ -37,6 +37,7 @@ import reciter.engine.analysis.evidence.AverageClusteringEvidence;
 import reciter.engine.analysis.evidence.ClusteringEvidence;
 import reciter.engine.analysis.evidence.EducationYearEvidence;
 import reciter.engine.analysis.evidence.EmailEvidence;
+import reciter.engine.analysis.evidence.FeedbackEvidence;
 import reciter.engine.analysis.evidence.GenderEvidence;
 import reciter.engine.analysis.evidence.Grant;
 import reciter.engine.analysis.evidence.GrantEvidence;
@@ -247,6 +248,7 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
     private PersonTypeEvidence personTypeEvidence;
     private AverageClusteringEvidence averageClusteringEvidence;
     private GenderEvidence genderEvidence;
+    private FeedbackEvidence feedbackEvidence;
 
     public AverageClusteringEvidence getAverageClusteringEvidence() {
 		return averageClusteringEvidence;
@@ -1256,5 +1258,13 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
 	public void addArticleFeedbackScoresMap(Map<String, List<ReCiterArticleFeedbackScore>> articleFeedbackScoresMapList) {
 		this.articleFeedbackScoresMapList.add(articleFeedbackScoresMapList); 
 	
+	}
+
+	public FeedbackEvidence getFeedbackEvidence() {
+		return feedbackEvidence;
+	}
+
+	public void setFeedbackEvidence(FeedbackEvidence feedbackEvidence) {
+		this.feedbackEvidence = feedbackEvidence;
 	}
 }
