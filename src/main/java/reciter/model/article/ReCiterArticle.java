@@ -19,15 +19,14 @@
 package reciter.model.article;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-
 import org.springframework.data.annotation.Transient;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 import reciter.engine.analysis.evidence.AcceptedRejectedEvidence;
 import reciter.engine.analysis.evidence.AffiliationEvidence;
@@ -108,6 +107,7 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
     private double organizationFeedbackScore;
     private double targetAuthorNameFeedbackScore;
     private double yearFeedbackScore;
+    private double feedbackTotalScore;
     private String exportedCoAuthorNameFeedbackScore;
     private String exportedKeywordFeedackScore;
     private String exportedJournalFeedackScore;
@@ -123,9 +123,9 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
     private String exportedTargetAuthorNameFeedbackScore;
     private String exportedYearFeedbackScore; 
     private List<Map<String,List<ReCiterArticleFeedbackScore>>> articleFeedbackScoresMapList;
+    private double authorshipLikelihoodScore;
     
-    
-    /**
+	/**
      * Grant List.
 
      */
@@ -249,7 +249,9 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
     private AverageClusteringEvidence averageClusteringEvidence;
     private GenderEvidence genderEvidence;
     private FeedbackEvidence feedbackEvidence;
+    
 
+    
     public AverageClusteringEvidence getAverageClusteringEvidence() {
 		return averageClusteringEvidence;
 	}
@@ -1266,5 +1268,21 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
 
 	public void setFeedbackEvidence(FeedbackEvidence feedbackEvidence) {
 		this.feedbackEvidence = feedbackEvidence;
+	}
+	
+	public double getFeedbackTotalScore() {
+		return feedbackTotalScore;
+	}
+
+	public void setFeedbackTotalScore(double feedbackTotalScore) {
+		this.feedbackTotalScore = feedbackTotalScore;
+	}
+
+	public double getAuthorshipLikelihoodScore() {
+		return authorshipLikelihoodScore;
+	}
+
+	public void setAuthorshipLikelihoodScore(double authorshipLikelihoodScore) {
+		this.authorshipLikelihoodScore = authorshipLikelihoodScore;
 	}
 }
