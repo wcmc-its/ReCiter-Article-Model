@@ -209,6 +209,11 @@
     		<artifactId>spring-data-commons-core</artifactId>
     		<version>1.4.1.RELEASE</version>
 		</dependency>
+		<dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20240303</version> <!-- Latest stable version -->
+        </dependency>
     </dependencies>
     
     <profiles>
