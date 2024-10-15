@@ -42,6 +42,7 @@ public class ReCiterArticleFeature {
     private String issue;
     private String pages;
     private Evidence evidence;
+    private double authorshipLikelihoodScore;
 
     @Data
     @AllArgsConstructor
