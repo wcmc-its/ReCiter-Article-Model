@@ -18,11 +18,10 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @DynamoDBDocument
 public class ReCiterArticleFeature {
     private long pmid;
-    private String pmcid;
-    private double totalArticleScoreStandardized;
-    private double totalArticleScoreNonStandardized;
     @DynamoDBTyped(DynamoDBAttributeType.S)
     private PublicationFeedback userAssertion;
+    private double authorshipLikelihoodScore;
+    private String pmcid;
     private String publicationDateDisplay;
     private String publicationDateStandardized;
     private String datePublicationAddedToEntrez;
@@ -42,8 +41,7 @@ public class ReCiterArticleFeature {
     private String issue;
     private String pages;
     private Evidence evidence;
-    private double authorshipLikelihoodScore;
-
+    
     @Data
     @AllArgsConstructor
     @NoArgsConstructor
