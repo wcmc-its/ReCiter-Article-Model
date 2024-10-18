@@ -1,7 +1,5 @@
 package reciter.model.article;
 
-import org.json.JSONObject;
-
 import lombok.Getter;
 
 @Getter
