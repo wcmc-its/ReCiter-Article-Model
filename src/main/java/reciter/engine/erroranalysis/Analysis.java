@@ -40,7 +40,6 @@ public class Analysis {
     private int falseNeg;
     private int falsePos;
     private int goldStandardSize;
-    private int selectedClusterSize;
     private List<Long> truePositiveList = new ArrayList<>();
     private List<Long> trueNegativeList = new ArrayList<>();
     private List<Long> falsePositiveList = new ArrayList<>();
@@ -72,28 +71,25 @@ public class Analysis {
         }
 
     }
-
-    public static Analysis performAnalysis(List<Long> finalArticles, List<Long> selectedArticles, List<Long> goldStandardPmids) {
+    public static Analysis performAnalysis(List<ReCiterArticle> reCiterArticles,List<Long> goldStandardPmids) {
 
         Analysis analysis = new Analysis();
         if(goldStandardPmids != null && !goldStandardPmids.isEmpty()) {
 	        analysis.setGoldStandardSize(goldStandardPmids.size());
-	        analysis.setSelectedClusterSize(selectedArticles.size());
-	
-	            for (Long selectedArticle : selectedArticles) {
-	                if (finalArticles.contains(selectedArticle) && goldStandardPmids.contains(selectedArticle)) {
-	                    analysis.getTruePositiveList().add(selectedArticle);
-	                } else if (finalArticles.contains(selectedArticle) && !goldStandardPmids.contains(selectedArticle)) {
-	                    analysis.getFalsePositiveList().add(selectedArticle);
-	
-	                } else if (!finalArticles.contains(selectedArticle) && goldStandardPmids.contains(selectedArticle)) {
-	                    analysis.getFalseNegativeList().add(selectedArticle);
-	
-	                } else {
-	                    analysis.getTrueNegativeList().add(selectedArticle);
-	                }
-	            }
-	
+	        
+	        for (ReCiterArticle reCiterArticle : reCiterArticles) {
+		        if (reCiterArticle.getGoldStandard() == 1 && reCiterArticle.getAuthorshipLikelihoodScore() >= 50.0000 && goldStandardPmids.contains(reCiterArticle.getArticleId())) {
+		            analysis.getTruePositiveList().add(reCiterArticle.getArticleId());
+		        } else if (reCiterArticle.getGoldStandard() == -1 && reCiterArticle.getAuthorshipLikelihoodScore() < 50.0000) {
+		        	 analysis.getTrueNegativeList().add(reCiterArticle.getArticleId());
+		        } else if (reCiterArticle.getGoldStandard() == -1 && reCiterArticle.getAuthorshipLikelihoodScore() >= 50.0000 && !goldStandardPmids.contains(reCiterArticle.getArticleId())) {
+		            analysis.getFalsePositiveList().add(reCiterArticle.getArticleId());
+		        } else if (reCiterArticle.getGoldStandard() == -1 && reCiterArticle.getAuthorshipLikelihoodScore() < 50.0000 && goldStandardPmids.contains(reCiterArticle.getArticleId())){
+		        	analysis.getFalseNegativeList().add(reCiterArticle.getArticleId());
+		        }
+	    	
+	        }
+		
 	        analysis.setTruePos(analysis.getTruePositiveList().size());
 	        analysis.setTrueNeg(analysis.getTrueNegativeList().size());
 	        analysis.setFalseNeg(analysis.getFalseNegativeList().size());
@@ -105,9 +101,9 @@ public class Analysis {
     }
     
     public double getPrecision() {
-        if (selectedClusterSize == 0)
-            return 0;
-        return (double) truePos / selectedClusterSize;
+    	if (truePos + falseNeg == 0) 
+              return 0;
+    	return (double) truePos / (truePos + falsePos);
     }
 
     public void setPrecision(double precision) {
@@ -115,9 +111,10 @@ public class Analysis {
     }
 
     public double getRecall() {
-        if (goldStandardSize == 0)
+        if (truePos + falseNeg == 0) 
             return 0;
-        return (double) truePos / goldStandardSize;
+        return (double) truePos / (truePos + falseNeg);
+    	
     }
 
     public void setRecall(double recall) {
@@ -143,15 +140,6 @@ public class Analysis {
     public void setGoldStandardSize(int goldStandardSize) {
         this.goldStandardSize = goldStandardSize;
     }
-
-    public int getSelectedClusterSize() {
-        return selectedClusterSize;
-    }
-
-    public void setSelectedClusterSize(int selectedClusterSize) {
-        this.selectedClusterSize = selectedClusterSize;
-    }
-
     public List<Long> getFalsePositiveList() {
         return falsePositiveList;
     }
@@ -212,7 +200,7 @@ public class Analysis {
     public String toString() {
         return "Analysis [precision=" + precision + ", recall=" + recall + ", truePos=" + truePos + ", trueNeg="
                 + trueNeg + ", falseNeg=" + falseNeg + ", falsePos=" + falsePos + ", goldStandardSize="
-                + goldStandardSize + ", selectedClusterSize=" + selectedClusterSize + ", truePositiveList="
+                + goldStandardSize + ", truePositiveList="
                 + truePositiveList + ", trueNegativeList=" + trueNegativeList + ", falsePositiveList="
                 + falsePositiveList + ", falseNegativeList=" + falseNegativeList + "]";
     }
