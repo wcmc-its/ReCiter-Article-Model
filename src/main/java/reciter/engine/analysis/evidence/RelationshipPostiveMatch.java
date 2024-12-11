@@ -25,4 +25,5 @@ public class RelationshipPostiveMatch {
     private double relationshipMatchModifierMentorSeniorAuthor;
     private double relationshipMatchModifierManager;
     private double relationshipMatchModifierManagerSeniorAuthor;
+ 	private long relationshipMatchingCount;
 }

@@ -34,6 +34,9 @@ public class ReCiterArticleFeedbackIdentityScore {
 	private double scopusNonTargetAuthorInstitutionalAffiliationScore;
 	private double targetAuthorInstitutionalAffiliationMatchTypeScore;
 	private double pubmedTargetAuthorInstitutionalAffiliationMatchTypeScore;
+	private double relationshipPositiveMatchScore;
+	private double relationshipNegativeMatchScore;
+	private long relationshipIdentityCount;
 	private int countAccepted;
 	private int countRejected;
 	private String userAssertion;
@@ -47,6 +50,7 @@ public class ReCiterArticleFeedbackIdentityScore {
 			double grantMatchScore, double journalSubfieldScore, double nameMatchFirstScore, double nameMatchLastScore,
 			double nameMatchMiddleScore, double nameMatchModifierScore, double organizationalUnitMatchingScore,
 			double relationshipEvidenceTotalScore, double relationshipNonMatchScore,
+			double relationshipPositiveMatchScore, double relationshipNegativeMatchScore, long relationshipIdentityCount, 
 			double scopusNonTargetAuthorInstitutionalAffiliationScore,
 			double targetAuthorInstitutionalAffiliationMatchTypeScore,
 			double pubmedTargetAuthorInstitutionalAffiliationMatchTypeScore, String userAssertion) {
@@ -65,6 +69,9 @@ public class ReCiterArticleFeedbackIdentityScore {
 	        this.organizationalUnitMatchingScore = organizationalUnitMatchingScore;
 	        this.relationshipEvidenceTotalScore = relationshipEvidenceTotalScore;
 	        this.relationshipNonMatchScore = relationshipNonMatchScore;
+	        this.relationshipPositiveMatchScore = relationshipPositiveMatchScore;
+	        this.relationshipNegativeMatchScore = relationshipNegativeMatchScore; 
+	        this.relationshipIdentityCount = relationshipIdentityCount;
 	        this.scopusNonTargetAuthorInstitutionalAffiliationScore = scopusNonTargetAuthorInstitutionalAffiliationScore;
 	        this.targetAuthorInstitutionalAffiliationMatchTypeScore = targetAuthorInstitutionalAffiliationMatchTypeScore;
 	        this.pubmedTargetAuthorInstitutionalAffiliationMatchTypeScore = pubmedTargetAuthorInstitutionalAffiliationMatchTypeScore;
@@ -81,6 +88,7 @@ public class ReCiterArticleFeedbackIdentityScore {
 			double grantMatchScore, double journalSubfieldScore, double nameMatchFirstScore, double nameMatchLastScore,
 			double nameMatchMiddleScore, double nameMatchModifierScore, double organizationalUnitMatchingScore,
 			double relationshipEvidenceTotalScore, double relationshipNonMatchScore,
+			double relationshipPositiveMatchScore, double relationshipNegativeMatchScore, long relationshipIdentityCount, 
 			double scopusNonTargetAuthorInstitutionalAffiliationScore,
 			double targetAuthorInstitutionalAffiliationMatchTypeScore,
 			double pubmedTargetAuthorInstitutionalAffiliationMatchTypeScore, int countAccepted, int countRejected,
@@ -112,6 +120,9 @@ public class ReCiterArticleFeedbackIdentityScore {
 	        this.organizationalUnitMatchingScore = organizationalUnitMatchingScore;
 	        this.relationshipEvidenceTotalScore = relationshipEvidenceTotalScore;
 	        this.relationshipNonMatchScore = relationshipNonMatchScore;
+	        this.relationshipPositiveMatchScore = relationshipPositiveMatchScore;
+	        this.relationshipNegativeMatchScore = relationshipNegativeMatchScore; 
+	        this.relationshipIdentityCount = relationshipIdentityCount;
 	        this.scopusNonTargetAuthorInstitutionalAffiliationScore = scopusNonTargetAuthorInstitutionalAffiliationScore;
 	        this.targetAuthorInstitutionalAffiliationMatchTypeScore = targetAuthorInstitutionalAffiliationMatchTypeScore;
 	        this.pubmedTargetAuthorInstitutionalAffiliationMatchTypeScore = pubmedTargetAuthorInstitutionalAffiliationMatchTypeScore;

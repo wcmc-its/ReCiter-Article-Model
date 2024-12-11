@@ -21,4 +21,7 @@ public class RelationshipEvidence {
 	private double relationshipEvidenceTotalScore;
 	private RelationshipNegativeMatch relationshipNegativeMatch; 
     private List<RelationshipPostiveMatch> relationshipPositiveMatch;
+    private double relationshipPositiveMatchScore;
+    private double relationshipNegativeMatchScore;
+    private long relationshipIdentityCount;
 }
