@@ -29,8 +29,6 @@ public class ReCiterArticleFeedbackIdentityScore {
 	private double nameMatchMiddleScore;
 	private double nameMatchModifierScore;
 	private double organizationalUnitMatchingScore;
-	private double relationshipEvidenceTotalScore;
-	private double relationshipNonMatchScore;
 	private double scopusNonTargetAuthorInstitutionalAffiliationScore;
 	private double targetAuthorInstitutionalAffiliationMatchTypeScore;
 	private double pubmedTargetAuthorInstitutionalAffiliationMatchTypeScore;
@@ -49,7 +47,6 @@ public class ReCiterArticleFeedbackIdentityScore {
 			double discrepancyDegreeYearScore, double emailMatchScore, double genderScoreIdentityArticleDiscrepancy,
 			double grantMatchScore, double journalSubfieldScore, double nameMatchFirstScore, double nameMatchLastScore,
 			double nameMatchMiddleScore, double nameMatchModifierScore, double organizationalUnitMatchingScore,
-			double relationshipEvidenceTotalScore, double relationshipNonMatchScore,
 			double relationshipPositiveMatchScore, double relationshipNegativeMatchScore, long relationshipIdentityCount, 
 			double scopusNonTargetAuthorInstitutionalAffiliationScore,
 			double targetAuthorInstitutionalAffiliationMatchTypeScore,
@@ -67,8 +64,6 @@ public class ReCiterArticleFeedbackIdentityScore {
 	        this.nameMatchMiddleScore = nameMatchMiddleScore;
 	        this.nameMatchModifierScore = nameMatchModifierScore;
 	        this.organizationalUnitMatchingScore = organizationalUnitMatchingScore;
-	        this.relationshipEvidenceTotalScore = relationshipEvidenceTotalScore;
-	        this.relationshipNonMatchScore = relationshipNonMatchScore;
 	        this.relationshipPositiveMatchScore = relationshipPositiveMatchScore;
 	        this.relationshipNegativeMatchScore = relationshipNegativeMatchScore; 
 	        this.relationshipIdentityCount = relationshipIdentityCount;
@@ -87,14 +82,13 @@ public class ReCiterArticleFeedbackIdentityScore {
 			double discrepancyDegreeYearScore, double emailMatchScore, double genderScoreIdentityArticleDiscrepancy,
 			double grantMatchScore, double journalSubfieldScore, double nameMatchFirstScore, double nameMatchLastScore,
 			double nameMatchMiddleScore, double nameMatchModifierScore, double organizationalUnitMatchingScore,
-			double relationshipEvidenceTotalScore, double relationshipNonMatchScore,
 			double relationshipPositiveMatchScore, double relationshipNegativeMatchScore, long relationshipIdentityCount, 
 			double scopusNonTargetAuthorInstitutionalAffiliationScore,
 			double targetAuthorInstitutionalAffiliationMatchTypeScore,
 			double pubmedTargetAuthorInstitutionalAffiliationMatchTypeScore, int countAccepted, int countRejected,
 			String userAssertion) {
 		
-		 this.articleId = articleId;
+		 	this.articleId = articleId;
 	        this.feedbackScoreCites = feedbackScoreCites;
 	        this.feedbackScoreCoAuthorName = feedbackScoreCoAuthorName;
 	        this.feedbackScoreEmail = feedbackScoreEmail;
@@ -118,8 +112,6 @@ public class ReCiterArticleFeedbackIdentityScore {
 	        this.nameMatchMiddleScore = nameMatchMiddleScore;
 	        this.nameMatchModifierScore = nameMatchModifierScore;
 	        this.organizationalUnitMatchingScore = organizationalUnitMatchingScore;
-	        this.relationshipEvidenceTotalScore = relationshipEvidenceTotalScore;
-	        this.relationshipNonMatchScore = relationshipNonMatchScore;
 	        this.relationshipPositiveMatchScore = relationshipPositiveMatchScore;
 	        this.relationshipNegativeMatchScore = relationshipNegativeMatchScore; 
 	        this.relationshipIdentityCount = relationshipIdentityCount;
