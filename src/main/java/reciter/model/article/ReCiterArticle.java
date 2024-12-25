@@ -31,6 +31,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import reciter.engine.analysis.evidence.AcceptedRejectedEvidence;
 import reciter.engine.analysis.evidence.AffiliationEvidence;
 import reciter.engine.analysis.evidence.ArticleCountEvidence;
+import reciter.engine.analysis.evidence.AuthorCountEvidence;
 import reciter.engine.analysis.evidence.AuthorNameEvidence;
 import reciter.engine.analysis.evidence.AverageClusteringEvidence;
 import reciter.engine.analysis.evidence.ClusteringEvidence;
@@ -249,7 +250,7 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
     private AverageClusteringEvidence averageClusteringEvidence;
     private GenderEvidence genderEvidence;
     private FeedbackEvidence feedbackEvidence;
-    
+    private AuthorCountEvidence authorCountEvidence;
 
     
     public AverageClusteringEvidence getAverageClusteringEvidence() {
@@ -1284,5 +1285,13 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
 
 	public void setAuthorshipLikelihoodScore(double authorshipLikelihoodScore) {
 		this.authorshipLikelihoodScore = authorshipLikelihoodScore;
+	}
+
+	public AuthorCountEvidence getAuthorCountEvidence() {
+		return authorCountEvidence;
+	}
+
+	public void setAuthorCountEvidence(AuthorCountEvidence authorCountEvidence) {
+		this.authorCountEvidence = authorCountEvidence;
 	}
 }

@@ -18,6 +18,7 @@ import lombok.ToString;
 @DynamoDBDocument
 public class RelationshipEvidence {
 	
+	private double relationshipEvidenceTotalScore;
 	private RelationshipNegativeMatch relationshipNegativeMatch; 
     private List<RelationshipPostiveMatch> relationshipPositiveMatch;
     private double relationshipPositiveMatchScore;

@@ -19,6 +19,7 @@ public class ReCiterArticleFeedbackIdentityScore {
 	private double feedbackScoreTargetAuthorName;
 	private double feedbackScoreYear;
 	private double articleCountScore;
+	private double authorCountScore;
 	private double discrepancyDegreeYearScore;
 	private double emailMatchScore;
 	private double genderScoreIdentityArticleDiscrepancy;
@@ -38,12 +39,14 @@ public class ReCiterArticleFeedbackIdentityScore {
 	private int countAccepted;
 	private int countRejected;
 	private String userAssertion;
+	
+    
 	public ReCiterArticleFeedbackIdentityScore() {
 		super();
 	}
 			
 	
-	public ReCiterArticleFeedbackIdentityScore(long articleId, double articleCountScore,
+	public ReCiterArticleFeedbackIdentityScore(long articleId, double articleCountScore,double authorCountScore,
 			double discrepancyDegreeYearScore, double emailMatchScore, double genderScoreIdentityArticleDiscrepancy,
 			double grantMatchScore, double journalSubfieldScore, double nameMatchFirstScore, double nameMatchLastScore,
 			double nameMatchMiddleScore, double nameMatchModifierScore, double organizationalUnitMatchingScore,
@@ -54,6 +57,7 @@ public class ReCiterArticleFeedbackIdentityScore {
 		  	
 			this.articleId = articleId;
 			this.articleCountScore = articleCountScore;
+			this.authorCountScore = authorCountScore;
 	        this.discrepancyDegreeYearScore = discrepancyDegreeYearScore;
 	        this.emailMatchScore = emailMatchScore;
 	        this.genderScoreIdentityArticleDiscrepancy = genderScoreIdentityArticleDiscrepancy;
@@ -78,7 +82,7 @@ public class ReCiterArticleFeedbackIdentityScore {
 			double feedbackScoreCoAuthorName, double feedbackScoreEmail, double feedbackScoreInstitution,
 			double feedbackScoreJournal, double feedbackScoreJournalSubField, double feedbackScoreKeyword,
 			double feedbackScoreOrcid, double feedbackScoreOrcidCoAuthor, double feedbackScoreOrganization,
-			double feedbackScoreTargetAuthorName, double feedbackScoreYear, double articleCountScore,
+			double feedbackScoreTargetAuthorName, double feedbackScoreYear, double articleCountScore,double authorCountScore,
 			double discrepancyDegreeYearScore, double emailMatchScore, double genderScoreIdentityArticleDiscrepancy,
 			double grantMatchScore, double journalSubfieldScore, double nameMatchFirstScore, double nameMatchLastScore,
 			double nameMatchMiddleScore, double nameMatchModifierScore, double organizationalUnitMatchingScore,
@@ -102,6 +106,7 @@ public class ReCiterArticleFeedbackIdentityScore {
 	        this.feedbackScoreTargetAuthorName = feedbackScoreTargetAuthorName;
 	        this.feedbackScoreYear = feedbackScoreYear;
 	        this.articleCountScore = articleCountScore;
+	        this.authorCountScore = authorCountScore;
 	        this.discrepancyDegreeYearScore = discrepancyDegreeYearScore;
 	        this.emailMatchScore = emailMatchScore;
 	        this.genderScoreIdentityArticleDiscrepancy = genderScoreIdentityArticleDiscrepancy;
@@ -121,6 +126,8 @@ public class ReCiterArticleFeedbackIdentityScore {
 	        this.countAccepted = countAccepted;
 	        this.countRejected = countRejected;
 	        this.userAssertion = userAssertion;
+	        
+	      
 	}
 	
 }

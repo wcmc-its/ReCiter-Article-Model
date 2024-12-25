@@ -28,4 +28,5 @@ public class Evidence {
     private AverageClusteringEvidence averageClusteringEvidence;
     private ClusteringEvidence clusteringEvidence;
     private FeedbackEvidence feedbackEvidence;
+    private AuthorCountEvidence authorCountEvidence;
 }
