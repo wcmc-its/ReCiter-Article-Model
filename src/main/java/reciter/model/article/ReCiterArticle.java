@@ -126,6 +126,7 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
     private List<Map<String,List<ReCiterArticleFeedbackScore>>> articleFeedbackScoresMapList;
     private double authorshipLikelihoodScore;
     
+    
 	/**
      * Grant List.
 
@@ -251,7 +252,8 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
     private GenderEvidence genderEvidence;
     private FeedbackEvidence feedbackEvidence;
     private AuthorCountEvidence authorCountEvidence;
-
+    private long targetAuthorCount;
+    private double targetAuthorCountPenalty;
     
     public AverageClusteringEvidence getAverageClusteringEvidence() {
 		return averageClusteringEvidence;
@@ -1293,5 +1295,21 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
 
 	public void setAuthorCountEvidence(AuthorCountEvidence authorCountEvidence) {
 		this.authorCountEvidence = authorCountEvidence;
+	}
+
+	public long getTargetAuthorCount() {
+		return targetAuthorCount;
+	}
+
+	public void setTargetAuthorCount(long targetAuthorCount) {
+		this.targetAuthorCount = targetAuthorCount;
+	}
+
+	public double getTargetAuthorCountPenalty() {
+		return targetAuthorCountPenalty;
+	}
+
+	public void setTargetAuthorCountPenalty(double targetAuthorCountPenalty) {
+		this.targetAuthorCountPenalty = targetAuthorCountPenalty;
 	}
 }
