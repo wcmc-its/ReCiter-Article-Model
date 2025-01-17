@@ -41,8 +41,7 @@ public class ReCiterArticleFeature {
     private String issue;
     private String pages;
     private Evidence evidence;
-    private long targetAuthorCount;
-    private double targetAuthorCountPenalty; 
+    
     @Data
     @AllArgsConstructor
     @NoArgsConstructor

@@ -29,4 +29,6 @@ public class Evidence {
     private ClusteringEvidence clusteringEvidence;
     private FeedbackEvidence feedbackEvidence;
     private AuthorCountEvidence authorCountEvidence;
+    private long targetAuthorCount;
+    private double targetAuthorCountPenalty; 
 }
