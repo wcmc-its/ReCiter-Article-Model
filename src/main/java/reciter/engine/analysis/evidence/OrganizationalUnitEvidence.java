@@ -1,26 +1,29 @@
 package reciter.engine.analysis.evidence;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTyped;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperFieldModel.DynamoDBAttributeType;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import lombok.Data;
 import lombok.ToString;
 import reciter.model.identity.OrganizationalUnit.OrganizationalUnitType;
+import reciter.model.typeconverter.OrganizationalUnitTypeConverter;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbConvertedBy;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ToString
-@DynamoDBDocument
+@DynamoDbBean
 public class OrganizationalUnitEvidence {
 	
 	private String identityOrganizationalUnit;
 	private String articleAffiliation;
-	@DynamoDBTyped(DynamoDBAttributeType.S)
 	private OrganizationalUnitType organizationalUnitType;
 	private double organizationalUnitMatchingScore;
 	private String organizationalUnitModifier;
 	private double organizationalUnitModifierScore;
-
+	
+	@DynamoDbConvertedBy(OrganizationalUnitTypeConverter.class)
+	public OrganizationalUnitType getOrganizationalUnitType() {
+		return organizationalUnitType;
+	}
 }

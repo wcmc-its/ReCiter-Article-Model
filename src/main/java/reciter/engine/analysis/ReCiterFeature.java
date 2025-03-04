@@ -1,28 +1,27 @@
 package reciter.engine.analysis;
 
+import java.util.Date;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import reciter.api.parameters.UseGoldStandard;
-
-import java.util.Date;
-import java.util.List;
-
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTyped;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperFieldModel.DynamoDBAttributeType;
-import com.fasterxml.jackson.annotation.JsonInclude;
+import reciter.model.typeconverter.UseGoldStandardTypeConverter;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbConvertedBy;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-@DynamoDBDocument
+@DynamoDbBean
 public class ReCiterFeature {
     private String personIdentifier;
     private Date dateAdded;
     private Date dateUpdated;
-    @DynamoDBTyped(DynamoDBAttributeType.S)
     private UseGoldStandard mode;
     private Double overallAccuracy;
     private Double precision;
@@ -32,4 +31,10 @@ public class ReCiterFeature {
     private long countPendingArticles;
     private List<ReCiterArticleFeature.ArticleKeyword> articleKeywordsAcceptedArticles;
     private List<ReCiterArticleFeature> reCiterArticleFeatures;
+    
+    @DynamoDbConvertedBy(UseGoldStandardTypeConverter.class)
+	public UseGoldStandard getMode() {
+		return mode;
+	}
+    
 }

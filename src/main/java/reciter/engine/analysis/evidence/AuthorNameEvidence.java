@@ -1,16 +1,16 @@
 package reciter.engine.analysis.evidence;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import lombok.Data;
 import lombok.ToString;
 import reciter.model.identity.AuthorName;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ToString
-@DynamoDBDocument
+@DynamoDbBean
 public class AuthorNameEvidence {
     private AuthorName institutionalAuthorName;
     private AuthorName articleAuthorName;

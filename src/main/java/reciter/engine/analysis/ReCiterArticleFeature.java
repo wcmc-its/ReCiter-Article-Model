@@ -1,24 +1,24 @@
 package reciter.engine.analysis;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import reciter.engine.analysis.evidence.Evidence;
 import reciter.model.pubmed.MedlineCitationJournalISSN;
-
-import java.util.List;
-
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperFieldModel.DynamoDBAttributeType;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTyped;
-import com.fasterxml.jackson.annotation.JsonInclude;
+import reciter.model.typeconverter.KeywordTypeConverter;
+import reciter.model.typeconverter.PublicationFeedbackTypeConverter;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbConvertedBy;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-@DynamoDBDocument
+@DynamoDbBean
 public class ReCiterArticleFeature {
-    private long pmid;
-    @DynamoDBTyped(DynamoDBAttributeType.S)
+	private long pmid;
     private PublicationFeedback userAssertion;
     private double authorshipLikelihoodScore;
     private String pmcid;
@@ -42,17 +42,27 @@ public class ReCiterArticleFeature {
     private String pages;
     private Evidence evidence;
     
+    @DynamoDbConvertedBy(PublicationFeedbackTypeConverter.class)
+    public PublicationFeedback getUserAssertion() {
+		return userAssertion;
+	}
+    
+    
     @Data
     @AllArgsConstructor
     @NoArgsConstructor
-    @DynamoDBDocument
+    @DynamoDbBean
     public static class ArticleKeyword {
       private String keyword;
-      @DynamoDBTyped(DynamoDBAttributeType.S)
       private KeywordType type;
       private Long count;
+      
+	  @DynamoDbConvertedBy(KeywordTypeConverter.class)
+      public KeywordType getType() {
+		return type;
+	}
 
-      public enum KeywordType {
+	public enum KeywordType {
         MESH_MAJOR //Mesh Major type
       }
 

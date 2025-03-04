@@ -2,11 +2,11 @@ package reciter.engine.analysis.evidence;
 
 import java.util.List;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import lombok.Data;
 import lombok.ToString;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 
 /**
  * @author szd2013
@@ -15,7 +15,7 @@ import lombok.ToString;
 @Data
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ToString
-@DynamoDBDocument
+@DynamoDbBean
 public class RelationshipEvidence {
 	
 	private double relationshipEvidenceTotalScore;

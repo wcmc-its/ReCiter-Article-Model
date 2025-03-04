@@ -2,24 +2,28 @@ package reciter.engine.analysis.evidence;
 
 import java.util.List;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTyped;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperFieldModel.DynamoDBAttributeType;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import lombok.Data;
 import lombok.ToString;
 import reciter.engine.analysis.evidence.AffiliationEvidence.InstitutionalAffiliationSource;
+import reciter.model.typeconverter.InstitutionalAffiliationSourceTypeConverter;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbConvertedBy;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ToString
-@DynamoDBDocument
+@DynamoDbBean
 public class NonTargetAuthorScopusAffiliation {
 	
-	@DynamoDBTyped(DynamoDBAttributeType.S)
 	private InstitutionalAffiliationSource nonTargetAuthorInstitutionalAffiliationSource;
 	private List<String> nonTargetAuthorInstitutionalAffiliationMatchKnownInstitution;
 	private List<String> nonTargetAuthorInstitutionalAffiliationMatchCollaboratingInstitution; 
 	private double nonTargetAuthorInstitutionalAffiliationScore;
+	
+	@DynamoDbConvertedBy(InstitutionalAffiliationSourceTypeConverter.class)
+	public List<String> getNonTargetAuthorInstitutionalAffiliationMatchCollaboratingInstitution() {
+		return nonTargetAuthorInstitutionalAffiliationMatchCollaboratingInstitution;
+	}
 }
