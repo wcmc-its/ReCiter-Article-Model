@@ -1,6 +1,6 @@
 package reciter.engine.analysis;
 
-import java.util.Date;
+import java.time.Instant;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -20,8 +20,8 @@ import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbConve
 @DynamoDbBean
 public class ReCiterFeature {
     private String personIdentifier;
-    private Date dateAdded;
-    private Date dateUpdated;
+    private Instant  dateAdded;
+    private Instant  dateUpdated;
     private UseGoldStandard mode;
     private Double overallAccuracy;
     private Double precision;

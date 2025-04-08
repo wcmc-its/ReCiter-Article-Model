@@ -3,7 +3,10 @@ package reciter.engine.analysis;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import lombok.Data;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 
+
+@DynamoDbBean
 @Data
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class ReCiterArticleAuthorFeature {
