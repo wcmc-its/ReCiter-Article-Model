@@ -21,14 +21,12 @@ public class InstitutionalAffiliationSourceTypeConverter implements AttributeCon
 
 	@Override
 	public EnhancedType<InstitutionalAffiliationSource> type() {
-		// TODO Auto-generated method stub
-		return null;
+		 return EnhancedType.of(AffiliationEvidence.InstitutionalAffiliationSource.class);
 	}
 
 	@Override
 	public AttributeValueType attributeValueType() {
-		// TODO Auto-generated method stub
-		return null;
+		 return AttributeValueType.S;
 	}
 
 }

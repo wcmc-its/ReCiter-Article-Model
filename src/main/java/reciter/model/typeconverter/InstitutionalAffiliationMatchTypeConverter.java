@@ -21,14 +21,12 @@ public class InstitutionalAffiliationMatchTypeConverter implements AttributeConv
 
 	@Override
 	public EnhancedType<InstitutionalAffiliationMatchType> type() {
-		// TODO Auto-generated method stub
-		return null;
+		return EnhancedType.of(AffiliationEvidence.InstitutionalAffiliationMatchType.class);
 	}
 
 	@Override
 	public AttributeValueType attributeValueType() {
-		// TODO Auto-generated method stub
-		return null;
+		 return AttributeValueType.S;
 	}
 
 }

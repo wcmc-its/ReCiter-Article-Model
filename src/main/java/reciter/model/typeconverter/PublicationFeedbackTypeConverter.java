@@ -21,13 +21,11 @@ public class PublicationFeedbackTypeConverter implements AttributeConverter<ReCi
 
 		@Override
 		public EnhancedType<PublicationFeedback> type() {
-			// TODO Auto-generated method stub
-			return null;
+			return EnhancedType.of(ReCiterArticleFeature.PublicationFeedback.class);
 		}
 
 		@Override
 		public AttributeValueType attributeValueType() {
-			// TODO Auto-generated method stub
-			return null;
+			return AttributeValueType.S;
 		}
 }

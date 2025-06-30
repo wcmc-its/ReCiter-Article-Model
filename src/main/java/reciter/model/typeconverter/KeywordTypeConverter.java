@@ -22,13 +22,11 @@ public class KeywordTypeConverter implements AttributeConverter<ReCiterArticleFe
 
 	@Override
 	public EnhancedType<KeywordType> type() {
-		// TODO Auto-generated method stub
-		return null;
+		 return EnhancedType.of(ReCiterArticleFeature.ArticleKeyword.KeywordType.class);
 	}
 
 	@Override
 	public AttributeValueType attributeValueType() {
-		// TODO Auto-generated method stub
-		return null;
+		 return AttributeValueType.S;
 	}
 }

@@ -20,14 +20,12 @@ public class UseGoldStandardTypeConverter implements AttributeConverter<UseGoldS
 
 	@Override
 	public EnhancedType<UseGoldStandard> type() {
-		// TODO Auto-generated method stub
-		return null;
+		 return EnhancedType.of(UseGoldStandard.class);
 	}
 
 	@Override
 	public AttributeValueType attributeValueType() {
-		// TODO Auto-generated method stub
-		return null;
+		 return AttributeValueType.S;
 	}
 
 	
