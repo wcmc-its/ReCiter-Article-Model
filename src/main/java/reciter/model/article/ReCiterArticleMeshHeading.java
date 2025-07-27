@@ -22,9 +22,17 @@ import java.util.List;
 
 import lombok.Data;
 
+/**
+ * The Class ReCiterArticleMeshHeading.
+ * @author ved4006
+ */
 @Data
 public class ReCiterArticleMeshHeading {
+	
+	/** The descriptor name. */
 	private ReCiterMeshHeadingDescriptorName descriptorName;
+	
+	/** The qualifier name list. */
 	private List<ReCiterMeshHeadingQualifierName> qualifierNameList;
 	
 }

@@ -18,6 +18,12 @@
  *******************************************************************************/
 package reciter.model.article;
 
+/**
+ * Represents the Authors metadata of a PubMed.
+ * @author ved4006
+ *
+ */
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -59,6 +65,11 @@ public class ReCiterArticleAuthors {
 		return authors;
 	}
 	
+	/**
+	 * Sets the authors.
+	 *
+	 * @param authors the new authors
+	 */
 	public void setAuthors(List<ReCiterAuthor> authors) {
 		this.authors = authors;
 	}
@@ -85,6 +96,8 @@ public class ReCiterArticleAuthors {
 	}
 
 	/**
+	 * Gets the sanitized author map.
+	 *
 	 * @return the sanitized list of author in Map
 	 */
 	public Map<ReCiterAuthor, ReCiterAuthor> getSanitizedAuthorMap() {
@@ -92,7 +105,9 @@ public class ReCiterArticleAuthors {
 	}
 
 	/**
-	 * @param sanitizedAuthorMap
+	 * Sets the sanitized author map.
+	 *
+	 * @param sanitizedAuthorMap the sanitized author map
 	 */
 	public void setSanitizedAuthorMap(Map<ReCiterAuthor, ReCiterAuthor> sanitizedAuthorMap) {
 		this.sanitizedAuthorMap = sanitizedAuthorMap;

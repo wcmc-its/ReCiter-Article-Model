@@ -30,14 +30,33 @@ import reciter.model.pubmed.MedlineCitationJournalISSN;
  */
 @Data
 public class ReCiterJournal {
+	
+	/** The journal title. */
 	private final String journalTitle;
+	
+	/** The journal issn. */
 	private List<MedlineCitationJournalISSN> journalIssn;
+	
+	/** The journal issue pub date year. */
 	private int journalIssuePubDateYear;
+	
+	/** The iso abbreviation. */
 	private String isoAbbreviation;
 	
+	/**
+	 * Instantiates a new re citer journal.
+	 *
+	 * @param journalTitle the journal title
+	 */
 	public ReCiterJournal(String journalTitle) {
 		this.journalTitle = journalTitle;
 	}
+	
+	/**
+	 * Exist.
+	 *
+	 * @return true, if successful
+	 */
 	public boolean exist() {
 		return journalTitle != null;
 	}

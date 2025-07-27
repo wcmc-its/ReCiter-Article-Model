@@ -21,58 +21,119 @@ package reciter.model.article;
 import reciter.model.identity.AuthorName;
 
 /**
- * 
- * @author jil3004
+ * The Class ReCiterAuthor.
  *
+ * @author jil3004
  */
 public class ReCiterAuthor {
 	
+	/** The name. */
 	private AuthorName name;
+	
+	/** The affiliation. */
 	private String affiliation;
+	
+	/** The rank. */
 	private int rank;
+	
+	/** The target author. */
 	private boolean targetAuthor;
+	
+	/** The valid email. */
 	private String validEmail;
+	
+	/** The orcid. */
 	private String orcid;
+	
+	/** The equal contrib. */
 	private String equalContrib;
 	
+	/**
+	 * Instantiates a new re citer author.
+	 *
+	 * @param name the name
+	 * @param affiliation the affiliation
+	 */
 	public ReCiterAuthor(AuthorName name, String affiliation) {
 		this.name = name;
 		this.affiliation = affiliation;
 	}
 	
+	/**
+	 * Gets the affiliation.
+	 *
+	 * @return the affiliation
+	 */
 	public String getAffiliation() {
 		return affiliation;
 	}
 	
+	/**
+	 * Gets the author name.
+	 *
+	 * @return the author name
+	 */
 	public AuthorName getAuthorName() {
 		return name;
 	}
 
+	/**
+	 * Checks if is target author.
+	 *
+	 * @return true, if is target author
+	 */
 	public boolean isTargetAuthor() {
 		return targetAuthor;
 	}
 
+	/**
+	 * Sets the target author.
+	 *
+	 * @param targetAuthor the new target author
+	 */
 	public void setTargetAuthor(boolean targetAuthor) {
 		this.targetAuthor = targetAuthor;
 	}
 
+	/**
+	 * Gets the valid email.
+	 *
+	 * @return the valid email
+	 */
 	public String getValidEmail() {
 		return validEmail;
 	}
 
+	/**
+	 * Sets the valid email.
+	 *
+	 * @param validEmail the new valid email
+	 */
 	public void setValidEmail(String validEmail) {
 		this.validEmail = validEmail;
 	}
 
+	/**
+	 * Gets the rank.
+	 *
+	 * @return the rank
+	 */
 	public int getRank() {
 		return rank;
 	}
 
+	/**
+	 * Sets the rank.
+	 *
+	 * @param rank the new rank
+	 */
 	public void setRank(int rank) {
 		this.rank = rank;
 	}
 
     /**
+     * Gets the orcid.
+     *
      * @return String return the orcid
      */
     public String getOrcid() {
@@ -80,18 +141,29 @@ public class ReCiterAuthor {
     }
 
     /**
+     * Sets the orcid.
+     *
      * @param orcid the orcid to set
      */
     public void setOrcid(String orcid) {
         this.orcid = orcid;
     }
+    
+    /**
+     * Gets the equal contrib.
+     *
+     * @return the equal contrib
+     */
     public String getEqualContrib() {
 		return equalContrib;
 	}
 
+	/**
+	 * Sets the equal contrib.
+	 *
+	 * @param equalContrib the new equal contrib
+	 */
 	public void setEqualContrib(String equalContrib) {
 		this.equalContrib = equalContrib;
 	}
-
-
 }

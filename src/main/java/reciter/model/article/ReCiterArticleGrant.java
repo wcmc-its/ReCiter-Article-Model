@@ -18,15 +18,32 @@
  *******************************************************************************/
 package reciter.model.article;
 
+/**
+ * Represents a grant associated with a ReCiter article.
+ * <p>
+ * This class contains information about the grant, such as grant ID, acronym,
+ * agency, country, and a sanitized version of the grant ID.
+ * </p>
+ * @author ved4006
+ */
+
 import lombok.Data;
 
 @Data
 public class ReCiterArticleGrant {
 
-	private String grantID;
-	private String acronym;
-	private String agency;
-	private String country;
-	private String sanitizedGrantID;
-	
+    /** The grant's identifier. */
+    private String grantID;
+
+    /** The acronym of the grant. */
+    private String acronym;
+
+    /** The agency or organization providing the grant. */
+    private String agency;
+
+    /** The country associated with the grant. */
+    private String country;
+
+    /** A sanitized version of the grant ID.*/
+    private String sanitizedGrantID;
 }
