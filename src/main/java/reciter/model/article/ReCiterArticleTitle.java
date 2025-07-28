@@ -24,6 +24,7 @@ package reciter.model.article;
  * This class encapsulates the title of a ReCiter article and provides utility methods
  * to check the existence of the title and to retrieve it.
  * </p>
+ * @author jil3004
  * @author ved4006
  *
  */
