@@ -16,6 +16,9 @@ import software.amazon.awssdk.enhanced.dynamodb.AttributeValueType;
 import software.amazon.awssdk.enhanced.dynamodb.EnhancedType;
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
 
+/**
+	InstitutionalAffiliationMatchTypeConverter class
+*/
 public class InstitutionalAffiliationMatchTypeConverter implements AttributeConverter<AffiliationEvidence.InstitutionalAffiliationMatchType> {
 
 	 /**

@@ -19,6 +19,10 @@ import lombok.ToString;
 import reciter.model.identity.AuthorName;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 
+/**
+	RelationshipPostiveMatch class
+*/
+
 @Data
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ToString

@@ -16,6 +16,9 @@ import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
 import reciter.model.identity.OrganizationalUnit;
 import reciter.model.identity.OrganizationalUnit.OrganizationalUnitType;
 
+/**
+	OrganizationalUnitTypeConverter class
+*/
 public class OrganizationalUnitTypeConverter implements AttributeConverter<OrganizationalUnit.OrganizationalUnitType> {
 
 	 /**

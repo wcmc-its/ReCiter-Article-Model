@@ -7,7 +7,7 @@ import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 
 /**
  * The Class ReCiterJournalCategory.
- * @ved4006
+ * @author ved4006
  */
 @Data
 @JsonInclude(JsonInclude.Include.NON_EMPTY)

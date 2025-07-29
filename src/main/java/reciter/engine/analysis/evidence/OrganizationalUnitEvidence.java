@@ -18,6 +18,9 @@ import reciter.model.typeconverter.OrganizationalUnitTypeConverter;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbConvertedBy;
 
+/**
+	OrganizationalUnitEvidence class
+*/
 @Data
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ToString

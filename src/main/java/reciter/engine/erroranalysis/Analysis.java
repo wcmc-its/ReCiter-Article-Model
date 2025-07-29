@@ -45,7 +45,9 @@ public class Analysis {
     private List<Long> falsePositiveList = new ArrayList<>();
     private List<Long> falseNegativeList = new ArrayList<>();
 
-
+	/**
+		Assigns goldstandards based on acceptedPmids and Rejected pmids.
+	*/
     public static void assignGoldStandard(List<ReCiterArticle> reCiterArticles, List<Long> acceptedPmids, List<Long> rejectedPmids) {
         Set<Long> pmidSet = new HashSet<>();
         if(acceptedPmids != null && !acceptedPmids.isEmpty()) {
@@ -71,6 +73,9 @@ public class Analysis {
         }
 
     }
+	/**
+		Performs the analysis based articles gold standards
+	*/
     public static Analysis performAnalysis(List<ReCiterArticle> reCiterArticles,List<Long> goldStandardPmids) {
 
         Analysis analysis = new Analysis();
@@ -99,103 +104,152 @@ public class Analysis {
         }
         return analysis;
     }
-    
+    /**
+		Getter for precision
+	*/
     public double getPrecision() {
     	if (truePos + falseNeg == 0) 
               return 0;
     	return (double) truePos / (truePos + falsePos);
     }
-
+	/**
+		Setter for precision
+	*/
     public void setPrecision(double precision) {
         this.precision = precision;
     }
-
+	/**
+		Getter for Recall
+	*/
     public double getRecall() {
         if (truePos + falseNeg == 0) 
             return 0;
         return (double) truePos / (truePos + falseNeg);
     	
     }
-
+	/**
+		Setter for Recall
+	*/
     public void setRecall(double recall) {
         this.recall = recall;
     }
-    
+    /**
+		getter for accuracy
+	*/
     public double getAccuracy() {
 		return (this.precision + this.recall)/2;
 	}
-
+	/**
+		Getter for TruePos
+	*/
 	public int getTruePos() {
         return truePos;
     }
-
+	/**
+		Setter for the TruePos
+	*/
     public void setTruePos(int truePos) {
         this.truePos = truePos;
     }
-
+	/**
+		Getter for the goldstandard size
+	*/
     public int getGoldStandardSize() {
         return goldStandardSize;
     }
-
+	/**
+		Setter for the gold standard Size
+	*/
     public void setGoldStandardSize(int goldStandardSize) {
         this.goldStandardSize = goldStandardSize;
     }
+	/**
+		Getter for the FalsePoistiveList
+	*/
     public List<Long> getFalsePositiveList() {
         return falsePositiveList;
     }
-
+	/**
+		Setter for the FalsePositive list
+	*/
     public void setFalsePositiveList(List<Long> falsePositiveList) {
         this.falsePositiveList = falsePositiveList;
     }
-
+	/**
+		Getter for the False negative List
+	*/
     public List<Long> getFalseNegativeList() {
         return falseNegativeList;
     }
-
+	/**
+		Setter for the False nagative List 
+	*/
     public void setFalseNegativeList(List<Long> falseNegativeList) {
         this.falseNegativeList = falseNegativeList;
     }
-
+	/**
+		Getter for the False negative
+	*/
     public int getFalseNeg() {
         return falseNeg;
     }
-
+	/**
+		Setter for the False negative
+	*/
     public void setFalseNeg(int falseNeg) {
         this.falseNeg = falseNeg;
     }
-
+	/**
+		Getter for the trueneg
+	*/
     public int getTrueNeg() {
         return trueNeg;
     }
-
+	/**
+		Setter for the trueneg
+	*/
     public void setTrueNeg(int trueNeg) {
         this.trueNeg = trueNeg;
     }
-
+	/**
+		Getter for the False position
+	*/
     public int getFalsePos() {
         return falsePos;
     }
-
+	/**
+		Setter for the false position
+	*/
     public void setFalsePos(int falsePos) {
         this.falsePos = falsePos;
     }
-
+	/**
+		Getter for the true positive list
+	*/
     public List<Long> getTruePositiveList() {
         return truePositiveList;
     }
-
+	/**
+		Setter for true positive List
+	*/
     public void setTruePositiveList(List<Long> truePositiveList) {
         this.truePositiveList = truePositiveList;
     }
-
+	/**
+		Getter for the True negative List
+	*/
     public List<Long> getTrueNegativeList() {
         return trueNegativeList;
     }
-
+	/**
+		Setter for the true negative list
+	*/
     public void setTrueNegativeList(List<Long> trueNegativeList) {
         this.trueNegativeList = trueNegativeList;
     }
-
+	/**
+		Overrides toString method for representation
+	*/
     @Override
     public String toString() {
         return "Analysis [precision=" + precision + ", recall=" + recall + ", truePos=" + truePos + ", trueNeg="

@@ -17,6 +17,9 @@ import software.amazon.awssdk.enhanced.dynamodb.AttributeValueType;
 import software.amazon.awssdk.enhanced.dynamodb.EnhancedType;
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
 
+/**
+	KeywordTypeConverter class
+*/
 public class KeywordTypeConverter implements AttributeConverter<ReCiterArticleFeature.ArticleKeyword.KeywordType> {
 
 	

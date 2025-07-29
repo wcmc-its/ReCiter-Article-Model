@@ -17,7 +17,9 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 import lombok.ToString;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
-
+/**
+	ClusteringEvidence class
+*/
 @Data
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ToString

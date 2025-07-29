@@ -16,6 +16,9 @@ import lombok.ToString;
 import reciter.model.identity.AuthorName;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 
+/**
+	AuthorNameEvidence class to hold the author name evidence information. 
+*/
 @Data
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ToString

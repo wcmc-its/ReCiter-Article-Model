@@ -14,6 +14,9 @@ import lombok.Data;
 import lombok.ToString;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 
+/**
+	ArticleCountEvidence to hold the count articles retrieved and count score. 
+*/
 @Data
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ToString

@@ -19,6 +19,9 @@ import reciter.model.typeconverter.InstitutionalAffiliationSourceTypeConverter;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbConvertedBy;
 
+/**
+	TargetAuthorScopusAffiliation class
+*/
 @Data
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @ToString

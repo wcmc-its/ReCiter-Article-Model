@@ -15,6 +15,9 @@ import lombok.Data;
 import lombok.ToString;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 
+/**
+	EmailEvidence class
+*/
 @Data
 @ToString
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
