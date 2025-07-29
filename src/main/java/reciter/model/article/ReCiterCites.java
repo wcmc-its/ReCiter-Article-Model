@@ -11,6 +11,7 @@ import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 
 /**
  * This class holds all the list of articles that the article cites
+ * @author ved4006
  */
 @Data
 @AllArgsConstructor

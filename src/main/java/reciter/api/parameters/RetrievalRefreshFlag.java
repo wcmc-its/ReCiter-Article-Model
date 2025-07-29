@@ -10,7 +10,12 @@ package reciter.api.parameters;
  */
 public enum RetrievalRefreshFlag {
 	
+	/** The all publications. */
 	ALL_PUBLICATIONS,
+	
+	/** The only newly added publications. */
 	ONLY_NEWLY_ADDED_PUBLICATIONS,
+	
+	/** The false. */
 	FALSE
 }

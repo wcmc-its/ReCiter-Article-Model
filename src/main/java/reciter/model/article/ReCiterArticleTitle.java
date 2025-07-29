@@ -20,20 +20,40 @@ package reciter.model.article;
 
 /**
  * ReCiterArticle title field.
+ * <p>
+ * This class encapsulates the title of a ReCiter article and provides utility methods
+ * to check the existence of the title and to retrieve it.
+ * </p>
  * @author jil3004
+ * @author ved4006
  *
  */
 public class ReCiterArticleTitle {
 	
-	private final String title;
+	 /** The title of the article (immutable). */
+    private final String title;
 
-	public ReCiterArticleTitle(String title) {
-		this.title = title;
-	}
-	public boolean exist() {
-		return title != null;
-	}
-	public String getTitle() {
-		return title;
-	}	
+    /**
+     * Constructs a ReCiterArticleTitle with the specified title.
+     * @param title the article title
+     */
+    public ReCiterArticleTitle(String title) {
+        this.title = title;
+    }
+
+    /**
+     * Checks if the title exists (is not null).
+     * @return true if the title exists, false otherwise
+     */
+    public boolean exist() {
+        return title != null;
+    }
+
+    /**
+     * Gets the article title.
+     * @return the title string
+     */
+    public String getTitle() {
+        return title;
+    }	
 }

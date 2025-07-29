@@ -18,7 +18,15 @@
  *******************************************************************************/
 package reciter.model.article;
 
+/**
+ * The Enum ReCiterCitationYNEnum.
+ * @author ved4006
+ */
 public enum ReCiterCitationYNEnum {
+	
+	/** The y. */
 	Y, 
+	
+	/** The n. */
 	N
 }

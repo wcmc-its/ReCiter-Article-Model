@@ -20,10 +20,17 @@ package reciter.model.article;
 
 import lombok.Data;
 
+/**
+ * The Class ReCiterMeshHeadingQualifierName.
+ * @author ved4006
+ */
 @Data
 public class ReCiterMeshHeadingQualifierName {
 
+	/** The major topic YN. */
 	private ReCiterCitationYNEnum majorTopicYN;
+	
+	/** The qualifier name. */
 	private String qualifierName;
 	
 }

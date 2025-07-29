@@ -21,13 +21,17 @@ package reciter.model.article;
 import lombok.Data;
 
 /**
- * @author szd2013
+ * The Class ReCiterMeshHeadingDescriptorName.
  *
+ * @author szd2013
  */
 @Data
 public class ReCiterMeshHeadingDescriptorName {
 
+	/** The major topic YN. */
 	private String majorTopicYN;
+	
+	/** The descriptor name. */
 	private String descriptorName;
 	
 }

@@ -18,10 +18,20 @@
  *******************************************************************************/
 package reciter.engine.erroranalysis;
 
+/**
+ * The Enum StatusEnum.
+ */
 public enum StatusEnum {
 
+	/** The true positive. */
 	TRUE_POSITIVE,
+	
+	/** The false positive. */
 	FALSE_POSITIVE,
+	
+	/** The true negative. */
 	TRUE_NEGATIVE,
+	
+	/** The false negative. */
 	FALSE_NEGATIVE,
 }

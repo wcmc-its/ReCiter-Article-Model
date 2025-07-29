@@ -9,6 +9,8 @@ import lombok.ToString;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 
 /**
+ * The Class RelationshipEvidence.
+ *
  * @author szd2013
  * This class contains the relationship evidence coming out of the relationship strategy
  */
@@ -18,10 +20,21 @@ import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 @DynamoDbBean
 public class RelationshipEvidence {
 	
+	/** The relationship evidence total score. */
 	private double relationshipEvidenceTotalScore;
+	
+	/** The relationship negative match. */
 	private RelationshipNegativeMatch relationshipNegativeMatch; 
+    
+    /** The relationship positive match. */
     private List<RelationshipPostiveMatch> relationshipPositiveMatch;
+    
+    /** The relationship positive match score. */
     private double relationshipPositiveMatchScore;
+    
+    /** The relationship negative match score. */
     private double relationshipNegativeMatchScore;
+    
+    /** The relationship identity count. */
     private long relationshipIdentityCount;
 }
