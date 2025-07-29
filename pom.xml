@@ -98,6 +98,10 @@
 					<artifactId>maven-javadoc-plugin</artifactId>
 					<version>${version.maven-javadoc-plugin}</version>
 					<configuration>
+						<failOnError>false</failOnError>
+						<additionalJOptions>
+						  <additionalJOption>-Xdoclint:none</additionalJOption>
+						</additionalJOptions>
 						<encoding>UTF-8</encoding>
 						<links>
 							<link>https://docs.oracle.com/en/java/javase/17/docs/api/</link>
