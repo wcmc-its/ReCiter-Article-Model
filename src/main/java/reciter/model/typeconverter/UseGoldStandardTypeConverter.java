@@ -1,5 +1,7 @@
 package reciter.model.typeconverter;
 
+import java.util.Optional;
+
 /**
  * A custom DynamoDB attribute converter for the {@link UseGoldStandard} enum.
  * <p>
@@ -39,7 +41,10 @@ public class UseGoldStandardTypeConverter implements AttributeConverter<UseGoldS
 	 */
 	@Override
 	public UseGoldStandard transformTo(AttributeValue input) {
-		return UseGoldStandard.valueOf(input.s());
+		return Optional.ofNullable(input.s())
+    	        .map(UseGoldStandard::valueOf)
+    	        .orElse(null);
+		
 	}
 
 	/**

@@ -1,5 +1,7 @@
 package reciter.model.typeconverter;
 
+import java.util.Optional;
+
 /**
  * A custom DynamoDB converter for mapping between the
  * {@link AffiliationEvidence.InstitutionalAffiliationSource} enum and a string attribute in DynamoDB.
@@ -41,7 +43,9 @@ public class InstitutionalAffiliationSourceTypeConverter implements AttributeCon
      */
 	@Override
 	public AffiliationEvidence.InstitutionalAffiliationSource transformTo(AttributeValue input) {
-		return AffiliationEvidence.InstitutionalAffiliationSource.valueOf(input.s());
+		return Optional.ofNullable(input.s())
+        .map(InstitutionalAffiliationSource::valueOf)
+        .orElse(null);
 	}
 
 	/**

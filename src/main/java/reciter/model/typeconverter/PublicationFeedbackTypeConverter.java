@@ -1,5 +1,7 @@
 package reciter.model.typeconverter;
 
+import java.util.Optional;
+
 /**
  * A custom DynamoDB attribute converter for the {@link PublicationFeedback} enum
  * used in {@link ReCiterArticleFeature}.
@@ -10,6 +12,7 @@ package reciter.model.typeconverter;
  */
 import reciter.engine.analysis.ReCiterArticleFeature;
 import reciter.engine.analysis.ReCiterArticleFeature.PublicationFeedback;
+import reciter.model.identity.OrganizationalUnit.OrganizationalUnitType;
 import software.amazon.awssdk.enhanced.dynamodb.AttributeConverter;
 import software.amazon.awssdk.enhanced.dynamodb.AttributeValueType;
 import software.amazon.awssdk.enhanced.dynamodb.EnhancedType;
@@ -40,7 +43,10 @@ public class PublicationFeedbackTypeConverter implements AttributeConverter<ReCi
     	 */
     	@Override
 	    public ReCiterArticleFeature.PublicationFeedback transformTo(AttributeValue input) {
-	        return ReCiterArticleFeature.PublicationFeedback.valueOf(input.s());
+    		return Optional.ofNullable(input.s())
+        	        .map(ReCiterArticleFeature.PublicationFeedback::valueOf)
+        	        .orElse(null);
+    		
 	    }
 
 		/**

@@ -1,5 +1,10 @@
 package reciter.model.typeconverter;
 
+import java.util.Optional;
+
+import reciter.model.identity.OrganizationalUnit;
+import reciter.model.identity.OrganizationalUnit.OrganizationalUnitType;
+
 /**
  * Custom DynamoDB converter for mapping the {@link OrganizationalUnitType}
  * enum to a string for persistence in DynamoDB, and back from string to enum
@@ -13,8 +18,6 @@ import software.amazon.awssdk.enhanced.dynamodb.AttributeConverter;
 import software.amazon.awssdk.enhanced.dynamodb.AttributeValueType;
 import software.amazon.awssdk.enhanced.dynamodb.EnhancedType;
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
-import reciter.model.identity.OrganizationalUnit;
-import reciter.model.identity.OrganizationalUnit.OrganizationalUnitType;
 
 /**
 	OrganizationalUnitTypeConverter class
@@ -42,7 +45,10 @@ public class OrganizationalUnitTypeConverter implements AttributeConverter<Organ
      */
 	@Override
 	public OrganizationalUnitType transformTo(AttributeValue input) {
-		 return OrganizationalUnitType.valueOf(input.s());
+		return Optional.ofNullable(input.s())
+    	        .map(OrganizationalUnitType::valueOf)
+    	        .orElse(null);
+		
 	}
 
 	

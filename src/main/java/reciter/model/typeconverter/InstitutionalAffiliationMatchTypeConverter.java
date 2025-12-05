@@ -1,5 +1,7 @@
 package reciter.model.typeconverter;
 
+import java.util.Optional;
+
 /**
 * A custom converter for DynamoDB to convert between the enum
 * {@link AffiliationEvidence.InstitutionalAffiliationMatchType} and
@@ -41,7 +43,10 @@ public class InstitutionalAffiliationMatchTypeConverter implements AttributeConv
      */
 	@Override
 	public AffiliationEvidence.InstitutionalAffiliationMatchType transformTo(AttributeValue input) {
-		return AffiliationEvidence.InstitutionalAffiliationMatchType.valueOf(input.s());
+		return Optional.ofNullable(input.s())
+		        .map(InstitutionalAffiliationMatchType::valueOf)
+		        .orElse(null);
+		
 	}
 
 	/**

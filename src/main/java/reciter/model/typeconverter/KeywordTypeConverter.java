@@ -1,5 +1,7 @@
 package reciter.model.typeconverter;
 
+import java.util.Optional;
+
 /**
  * A custom converter for storing and retrieving {@link KeywordType} enum values
  * as string attributes in AWS DynamoDB using the Enhanced Client (SDK v2).
@@ -43,7 +45,10 @@ public class KeywordTypeConverter implements AttributeConverter<ReCiterArticleFe
      */
     @Override
     public ReCiterArticleFeature.ArticleKeyword.KeywordType transformTo(AttributeValue input) {
-        return ReCiterArticleFeature.ArticleKeyword.KeywordType.valueOf(input.s());
+    	return Optional.ofNullable(input.s())
+    	        .map(ReCiterArticleFeature.ArticleKeyword.KeywordType::valueOf)
+    	        .orElse(null);
+      
     }
 
     /**
