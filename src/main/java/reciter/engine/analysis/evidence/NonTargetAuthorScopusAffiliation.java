@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 import lombok.ToString;
 import reciter.engine.analysis.evidence.AffiliationEvidence.InstitutionalAffiliationSource;
-import reciter.model.typeconverter.InstitutionalAffiliationSourceTypeConverter;
+import reciter.model.typeconverter.InstitutionalAffiliationSourceConverter;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbConvertedBy;
 
@@ -40,16 +40,15 @@ public class NonTargetAuthorScopusAffiliation {
 	
 	/** The score representing the quality of the non-target author's institutional affiliation. */
 	private double nonTargetAuthorInstitutionalAffiliationScore;
-	
+
 	/**
-     * Gets the list of non-target author institutional affiliations that match collaborating institutions.
-     * <p>
-     * This method is annotated for DynamoDB conversion.
-     * </p>
-     * @return List of institutional affiliations matching collaborating institutions.
-     */
-	@DynamoDbConvertedBy(InstitutionalAffiliationSourceTypeConverter.class)
-	public List<String> getNonTargetAuthorInstitutionalAffiliationMatchCollaboratingInstitution() {
-		return nonTargetAuthorInstitutionalAffiliationMatchCollaboratingInstitution;
+	 * Retrieves the institutional affiliation source associated with non-target authors.
+	 * {@link InstitutionalAffiliationSource} The institutional affiliation source of the 
+	 *         non-target author. This object contains information about the author's institution(s),
+	 *         which could be relevant in various contexts, such as collaborative research.
+	 */
+	@DynamoDbConvertedBy(InstitutionalAffiliationSourceConverter.class)
+	public InstitutionalAffiliationSource getNonTargetAuthorInstitutionalAffiliationSource() {
+		return nonTargetAuthorInstitutionalAffiliationSource;
 	}
 }
