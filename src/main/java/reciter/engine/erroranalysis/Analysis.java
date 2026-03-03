@@ -136,13 +136,13 @@ public class Analysis {
             }
 
             if (goldSet.contains(pmid)) {
-                // Ground-truth positive and present in article set → TP
+                // Ground-truth positive and present in article set ? TP
                 analysis.getTruePositiveList().add(pmid);
             } else if (article.getGoldStandard() == -1) {
-                // Confirmed rejected and present in article set → FP
+                // Confirmed rejected and present in article set ? FP
                 analysis.getFalsePositiveList().add(pmid);
             } else {
-                // goldStandard == 1 but not in goldSet — data inconsistency;
+                // goldStandard == 1 but not in goldSet � data inconsistency;
                 // treat conservatively as TN
                 analysis.getTrueNegativeList().add(pmid);
             }
@@ -154,14 +154,7 @@ public class Analysis {
                 analysis.getFalseNegativeList().add(pmid);
             }
         }
-
-        analysis.setTruePos(analysis.getTruePositiveList().size());
-        analysis.setTrueNeg(analysis.getTrueNegativeList().size());
-        analysis.setFalsePos(analysis.getFalsePositiveList().size());
-        analysis.setFalseNeg(analysis.getFalseNegativeList().size());
-        analysis.setPendingSkippedCount(pendingSkipped);
-
-        return analysis;
+            return analysis;
     }
 
     // --- Corrected metric formulas ---
@@ -184,8 +177,10 @@ public class Analysis {
      * Recall = TP / goldStandardSize (= TP / (TP + FN)).
      */
     public double getRecall() {
-        if (goldStandardSize == 0) return 0;
-        return (double) truePos / goldStandardSize;
+        if (truePos + falseNeg == 0) 
+            return 0;
+        return (double) truePos / (truePos + falseNeg);
+    	
 
     }
 

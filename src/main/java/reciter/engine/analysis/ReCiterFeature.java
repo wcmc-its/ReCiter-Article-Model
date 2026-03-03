@@ -32,5 +32,4 @@ public class ReCiterFeature {
     private long countPendingArticles;
     private List<ReCiterArticleFeature.ArticleKeyword> articleKeywordsAcceptedArticles;
     private List<ReCiterArticleFeature> reCiterArticleFeatures;
-
 }
