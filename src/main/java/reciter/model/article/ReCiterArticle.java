@@ -103,6 +103,7 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
     private double orcidFeedbackScore;
     private double orcidCoAuthorFeedbackScore;
     private double citesFeedbackScore;
+    private double bibliographicCouplingFeedbackScore;
     private double emailFeedbackScore;
     private double institutionFeedbackScore;
     private double organizationFeedbackScore;
@@ -120,6 +121,7 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
     private String exportedOrcidFeedbackScore;
     private String exportedOrcidCoAuthorFeedbackScore;
     private String exportedCitesFeedbackScore;
+    private String exportedBibliographicCouplingFeedbackScore;
     private String exportedEmailFeedbackScore;
     private String exportedInstitutionFeedbackScore;
     private String exportedOrganizationFeedbackScore;
@@ -1100,6 +1102,14 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
 		this.citesFeedbackScore = citesFeedbackScore;
 	}
 
+	public double getBibliographicCouplingFeedbackScore() {
+		return bibliographicCouplingFeedbackScore;
+	}
+
+	public void setBibliographicCouplingFeedbackScore(double bibliographicCouplingFeedbackScore) {
+		this.bibliographicCouplingFeedbackScore = bibliographicCouplingFeedbackScore;
+	}
+
 	public double getEmailFeedbackScore() {
 		return emailFeedbackScore;
 	}
@@ -1234,6 +1244,14 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
 
 	public void setExportedCitesFeedbackScore(String exportedCitesFeedbackScore) {
 		this.exportedCitesFeedbackScore = exportedCitesFeedbackScore;
+	}
+
+	public String getExportedBibliographicCouplingFeedbackScore() {
+		return exportedBibliographicCouplingFeedbackScore;
+	}
+
+	public void setExportedBibliographicCouplingFeedbackScore(String exportedBibliographicCouplingFeedbackScore) {
+		this.exportedBibliographicCouplingFeedbackScore = exportedBibliographicCouplingFeedbackScore;
 	}
 
 	public String getExportedEmailFeedbackScore() {
