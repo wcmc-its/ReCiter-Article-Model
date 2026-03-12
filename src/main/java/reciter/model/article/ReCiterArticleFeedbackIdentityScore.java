@@ -13,6 +13,8 @@ public class ReCiterArticleFeedbackIdentityScore {
 	private double feedbackScoreJournal;
 	private double feedbackScoreJournalSubField;
 	private double feedbackScoreKeyword;
+	private double feedbackScoreTextSimilarity;
+	private double feedbackScoreJournalTitleSimilarity;
 	private double feedbackScoreOrcid;
 	private double feedbackScoreOrcidCoAuthor;
 	private double feedbackScoreOrganization;
@@ -82,6 +84,7 @@ public class ReCiterArticleFeedbackIdentityScore {
 	public ReCiterArticleFeedbackIdentityScore(long articleId, double feedbackScoreCites,
 			double feedbackScoreCoAuthorName, double feedbackScoreEmail, double feedbackScoreInstitution,
 			double feedbackScoreJournal, double feedbackScoreJournalSubField, double feedbackScoreKeyword,
+			double feedbackScoreTextSimilarity, double feedbackScoreJournalTitleSimilarity,
 			double feedbackScoreOrcid, double feedbackScoreOrcidCoAuthor, double feedbackScoreOrganization,
 			double feedbackScoreTargetAuthorName, double feedbackScoreYear,
 			double feedbackScoreBibliographicCoupling, double articleCountScore,double authorCountScore,
@@ -102,6 +105,8 @@ public class ReCiterArticleFeedbackIdentityScore {
 	        this.feedbackScoreJournal = feedbackScoreJournal;
 	        this.feedbackScoreJournalSubField = feedbackScoreJournalSubField;
 	        this.feedbackScoreKeyword = feedbackScoreKeyword;
+	        this.feedbackScoreTextSimilarity = feedbackScoreTextSimilarity;
+	        this.feedbackScoreJournalTitleSimilarity = feedbackScoreJournalTitleSimilarity;
 	        this.feedbackScoreOrcid = feedbackScoreOrcid;
 	        this.feedbackScoreOrcidCoAuthor = feedbackScoreOrcidCoAuthor;
 	        this.feedbackScoreOrganization = feedbackScoreOrganization;
