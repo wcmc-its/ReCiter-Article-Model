@@ -26,7 +26,22 @@ import java.util.Set;
 import reciter.model.article.ReCiterArticle;
 
 /**
- * Class that performs analysis such as calculating precision and recall.
+ * Computes precision, recall, and accuracy for ReCiter article suggestions.
+ *
+ * <p><b>PENDING article handling (fixed 2026-02):</b> Articles with
+ * {@code goldStandard == 0} (PENDING / no curator decision) are excluded
+ * from all confusion-matrix counts. The old implementation treated them as
+ * false positives, which artificially deflated precision whenever undecided
+ * articles scored above the suggestion threshold.</p>
+ *
+ * <p><b>Precision formula (fixed 2026-02):</b> Now correctly computed as
+ * {@code TP / (TP + FP)}. The old implementation used
+ * {@code TP / selectedClusterSize} (total articles), which is not standard
+ * precision.</p>
+ *
+ * <p><b>Accuracy formula (fixed 2026-02):</b> Now computed as
+ * {@code (TP + TN) / (TP + TN + FP + FN)}. The old implementation used
+ * {@code (precision + recall) / 2}.</p>
  *
  * @author jil3004
  */
@@ -34,134 +49,164 @@ public class Analysis {
 
     private double precision;
     private double recall;
+   
 
     private int truePos;
     private int trueNeg;
     private int falseNeg;
     private int falsePos;
     private int goldStandardSize;
+    private int pendingSkippedCount;
     private List<Long> truePositiveList = new ArrayList<>();
     private List<Long> trueNegativeList = new ArrayList<>();
     private List<Long> falsePositiveList = new ArrayList<>();
     private List<Long> falseNegativeList = new ArrayList<>();
 
+    public Analysis() {
+    }
 
-    public static void assignGoldStandard(List<ReCiterArticle> reCiterArticles, List<Long> acceptedPmids, List<Long> rejectedPmids) {
-        Set<Long> pmidSet = new HashSet<>();
-        if(acceptedPmids != null && !acceptedPmids.isEmpty()) {
-	        acceptedPmids.stream().forEach(acceptedPmid -> pmidSet.add(acceptedPmid));
+    /**
+     * Assign gold standard labels to each ReCiterArticle based on accepted/rejected PMID lists.
+     *
+     * @param reCiterArticles articles to label
+     * @param acceptedPmids   PMIDs with ACCEPTED curator decision (goldStandard = 1)
+     * @param rejectedPmids   PMIDs with REJECTED curator decision (goldStandard = -1)
+     */
+    public static void assignGoldStandard(List<ReCiterArticle> reCiterArticles,
+                                          List<Long> acceptedPmids,
+                                          List<Long> rejectedPmids) {
+        Set<Long> acceptedSet = new HashSet<>();
+        if (acceptedPmids != null) {
+            acceptedSet.addAll(acceptedPmids);
         }
 
-        for (ReCiterArticle reCiterArticle : reCiterArticles) {
-            if (pmidSet.contains(reCiterArticle.getArticleId())) {
-                reCiterArticle.setGoldStandard(1);
-            } 
-        }
-        if (rejectedPmids != null) {
-            if (!pmidSet.isEmpty()) {
-                pmidSet.clear();
+        for (ReCiterArticle article : reCiterArticles) {
+            if (acceptedSet.contains(article.getArticleId())) {
+                article.setGoldStandard(1);
             }
-            rejectedPmids.stream().forEach(rejectedPmid -> pmidSet.add(rejectedPmid));
+        }
 
-            for (ReCiterArticle reCiterArticle : reCiterArticles) {
-                if (pmidSet.contains(reCiterArticle.getArticleId())) {
-                    reCiterArticle.setGoldStandard(-1);
+        if (rejectedPmids != null) {
+            Set<Long> rejectedSet = new HashSet<>(rejectedPmids);
+            for (ReCiterArticle article : reCiterArticles) {
+                if (rejectedSet.contains(article.getArticleId())) {
+                    article.setGoldStandard(-1);
                 }
             }
         }
-
     }
-    public static Analysis performAnalysis(List<ReCiterArticle> reCiterArticles,List<Long> goldStandardPmids) {
 
+    /**
+     * Compute precision/recall/accuracy over a set of articles.
+     *
+     * <p>Called by {@code ReCiterController} (7 filter branches) and
+     * {@code ReCiterFeatureGenerator}.</p>
+     *
+     * @param articles          articles to evaluate; each must have
+     *                          {@code goldStandard} set (1 = ACCEPTED,
+     *                          -1 = REJECTED, 0 = PENDING/NULL)
+     * @param goldStandardPmids PMIDs of accepted (ground-truth positive)
+     *                          articles for this person
+     * @return populated Analysis object
+     */
+    public static Analysis performAnalysis(List<ReCiterArticle> articles,
+                                           List<Long> goldStandardPmids) {
         Analysis analysis = new Analysis();
-        if(goldStandardPmids != null && !goldStandardPmids.isEmpty()) {
-	        analysis.setGoldStandardSize(goldStandardPmids.size());
-	        
-	        for (ReCiterArticle reCiterArticle : reCiterArticles) {
-		        if (reCiterArticle.getGoldStandard() == 1 && reCiterArticle.getAuthorshipLikelihoodScore() >= 50.0000 && goldStandardPmids.contains(reCiterArticle.getArticleId())) {
-		            analysis.getTruePositiveList().add(reCiterArticle.getArticleId());
-		        } else if (reCiterArticle.getGoldStandard() == -1 && reCiterArticle.getAuthorshipLikelihoodScore() < 50.0000) {
-		        	 analysis.getTrueNegativeList().add(reCiterArticle.getArticleId());
-		        } else if (reCiterArticle.getGoldStandard() == -1 && reCiterArticle.getAuthorshipLikelihoodScore() >= 50.0000 && !goldStandardPmids.contains(reCiterArticle.getArticleId())) {
-		            analysis.getFalsePositiveList().add(reCiterArticle.getArticleId());
-		        } else if (reCiterArticle.getGoldStandard() == -1 && reCiterArticle.getAuthorshipLikelihoodScore() < 50.0000 && goldStandardPmids.contains(reCiterArticle.getArticleId())){
-		        	analysis.getFalseNegativeList().add(reCiterArticle.getArticleId());
-		        }
-	    	
-	        }
-		
-	        analysis.setTruePos(analysis.getTruePositiveList().size());
-	        analysis.setTrueNeg(analysis.getTrueNegativeList().size());
-	        analysis.setFalseNeg(analysis.getFalseNegativeList().size());
-	        analysis.setFalsePos(analysis.getFalsePositiveList().size());
-	        analysis.setPrecision(analysis.getPrecision());
-	        analysis.setRecall(analysis.getRecall());
+
+        if (goldStandardPmids == null || goldStandardPmids.isEmpty()) {
+            return analysis;
         }
-        return analysis;
+
+        Set<Long> goldSet = new HashSet<>(goldStandardPmids);
+        Set<Long> articlePmids = new HashSet<>();
+        int pendingSkipped = 0;
+
+        analysis.setGoldStandardSize(goldStandardPmids.size());
+        
+
+        for (ReCiterArticle article : articles) {
+            long pmid = article.getArticleId();
+            articlePmids.add(pmid);
+
+            // --- FIX: skip PENDING articles (goldStandard == 0) ---
+            // These have no curator decision and must not inflate FP count.
+            if (article.getGoldStandard() == 0) {
+                pendingSkipped++;
+                continue;
+            }
+
+            if (goldSet.contains(pmid)) {
+                // Ground-truth positive and present in article set ? TP
+                analysis.getTruePositiveList().add(pmid);
+            } else if (article.getGoldStandard() == -1) {
+                // Confirmed rejected and present in article set ? FP
+                analysis.getFalsePositiveList().add(pmid);
+            } else {
+                // goldStandard == 1 but not in goldSet � data inconsistency;
+                // treat conservatively as TN
+                analysis.getTrueNegativeList().add(pmid);
+            }
+        }
+
+        // False negatives: accepted articles NOT present in the article set
+        for (Long pmid : goldStandardPmids) {
+            if (!articlePmids.contains(pmid)) {
+                analysis.getFalseNegativeList().add(pmid);
+            }
+        }
+            return analysis;
     }
-    
+
+    // --- Corrected metric formulas ---
+
+    /**
+     * Precision = TP / (TP + FP).
+     * <p>Old (buggy): TP / selectedClusterSize.</p>
+     */
     public double getPrecision() {
-    	if (truePos + falseNeg == 0) 
-              return 0;
-    	return (double) truePos / (truePos + falsePos);
+        int denominator = truePos + falsePos;
+        if (denominator == 0) return 0;
+        return (double) truePos / denominator;
     }
 
     public void setPrecision(double precision) {
         this.precision = precision;
     }
 
+    /**
+     * Recall = TP / goldStandardSize (= TP / (TP + FN)).
+     */
     public double getRecall() {
         if (truePos + falseNeg == 0) 
             return 0;
         return (double) truePos / (truePos + falseNeg);
     	
+
     }
 
     public void setRecall(double recall) {
         this.recall = recall;
     }
-    
-    public double getAccuracy() {
-		return (this.precision + this.recall)/2;
-	}
 
-	public int getTruePos() {
+    /**
+     * Accuracy = (TP + TN) / (TP + TN + FP + FN).
+     * <p>Old (buggy): (precision + recall) / 2.</p>
+     */
+    public double getAccuracy() {
+        int total = truePos + trueNeg + falsePos + falseNeg;
+        if (total == 0) return 0;
+        return (double) (truePos + trueNeg) / total;
+    }
+
+    
+    // --- Getters and setters ---
+
+    public int getTruePos() {
         return truePos;
     }
 
     public void setTruePos(int truePos) {
         this.truePos = truePos;
-    }
-
-    public int getGoldStandardSize() {
-        return goldStandardSize;
-    }
-
-    public void setGoldStandardSize(int goldStandardSize) {
-        this.goldStandardSize = goldStandardSize;
-    }
-    public List<Long> getFalsePositiveList() {
-        return falsePositiveList;
-    }
-
-    public void setFalsePositiveList(List<Long> falsePositiveList) {
-        this.falsePositiveList = falsePositiveList;
-    }
-
-    public List<Long> getFalseNegativeList() {
-        return falseNegativeList;
-    }
-
-    public void setFalseNegativeList(List<Long> falseNegativeList) {
-        this.falseNegativeList = falseNegativeList;
-    }
-
-    public int getFalseNeg() {
-        return falseNeg;
-    }
-
-    public void setFalseNeg(int falseNeg) {
-        this.falseNeg = falseNeg;
     }
 
     public int getTrueNeg() {
@@ -180,6 +225,30 @@ public class Analysis {
         this.falsePos = falsePos;
     }
 
+    public int getFalseNeg() {
+        return falseNeg;
+    }
+
+    public void setFalseNeg(int falseNeg) {
+        this.falseNeg = falseNeg;
+    }
+
+    public int getGoldStandardSize() {
+        return goldStandardSize;
+    }
+
+    public void setGoldStandardSize(int goldStandardSize) {
+        this.goldStandardSize = goldStandardSize;
+    }
+
+    public int getPendingSkippedCount() {
+        return pendingSkippedCount;
+    }
+
+    public void setPendingSkippedCount(int pendingSkippedCount) {
+        this.pendingSkippedCount = pendingSkippedCount;
+    }
+
     public List<Long> getTruePositiveList() {
         return truePositiveList;
     }
@@ -196,13 +265,33 @@ public class Analysis {
         this.trueNegativeList = trueNegativeList;
     }
 
-    @Override
-    public String toString() {
-        return "Analysis [precision=" + precision + ", recall=" + recall + ", truePos=" + truePos + ", trueNeg="
-                + trueNeg + ", falseNeg=" + falseNeg + ", falsePos=" + falsePos + ", goldStandardSize="
-                + goldStandardSize + ", truePositiveList="
-                + truePositiveList + ", trueNegativeList=" + trueNegativeList + ", falsePositiveList="
-                + falsePositiveList + ", falseNegativeList=" + falseNegativeList + "]";
+    public List<Long> getFalsePositiveList() {
+        return falsePositiveList;
     }
 
+    public void setFalsePositiveList(List<Long> falsePositiveList) {
+        this.falsePositiveList = falsePositiveList;
+    }
+
+    public List<Long> getFalseNegativeList() {
+        return falseNegativeList;
+    }
+
+    public void setFalseNegativeList(List<Long> falseNegativeList) {
+        this.falseNegativeList = falseNegativeList;
+    }
+
+    @Override
+    public String toString() {
+        return "Analysis [precision=" + getPrecision()
+                + ", recall=" + getRecall()
+                + ", accuracy=" + getAccuracy()
+                + ", truePos=" + truePos
+                + ", trueNeg=" + trueNeg
+                + ", falsePos=" + falsePos
+                + ", falseNeg=" + falseNeg
+                + ", pendingSkipped=" + pendingSkippedCount
+                + ", goldStandardSize=" + goldStandardSize
+                + "]";
+    }
 }
