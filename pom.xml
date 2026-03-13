@@ -40,7 +40,7 @@
 		<connection>scm:git:git://github.com/wcmc-its/ReCiter-Article-Model.git</connection>
 		<developerConnection>scm:git:git@github.com:wcmc-its/ReCiter-Article-Model.git</developerConnection>
 		<url>https://github.com/wcmc-its/ReCiter-Article-Model</url>
-		<tag>reciter-article-model-2.0.18</tag>
+		<tag>reciter-article-model-2.0.33</tag>
 	</scm>
     
     <distributionManagement>
@@ -67,6 +67,56 @@
 	</properties>
     <build>
     <sourceDirectory>src/main/java</sourceDirectory>
+	  <plugins>
+			<!-- Apply the plugin directly here -->
+			<plugin>
+			  <groupId>org.sonatype.central</groupId>
+			  <artifactId>central-publishing-maven-plugin</artifactId>
+			  <version>0.8.0</version>
+			  <extensions>true</extensions>
+			  <configuration>
+				<publishingServerId>central</publishingServerId>
+			  </configuration>
+			</plugin>
+			<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>${version.maven-source-plugin}</version>
+					<executions>
+					<execution>
+					<id>attach-sources</id>
+					<phase>package</phase>
+					<goals>
+					<goal>jar</goal>
+					</goals>
+					</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>${version.maven-javadoc-plugin}</version>
+					<configuration>
+						<failOnError>false</failOnError>
+						<additionalJOptions>
+						  <additionalJOption>-Xdoclint:none</additionalJOption>
+						</additionalJOptions>
+						<encoding>UTF-8</encoding>
+						<links>
+							<link>https://docs.oracle.com/en/java/javase/17/docs/api/</link>
+						</links>
+					</configuration>
+					<executions>
+						<execution>
+							<id>attach-javadoc</id>
+							<phase>package</phase> 
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+		 </plugins> 	
         <pluginManagement>
 	        <plugins>
 	            <plugin>
@@ -259,14 +309,5 @@
 			</build>
 		</profile>
 	</profiles>
-	<repositories>
-	    <repository>
-	        <id>oss-sonatype</id>
-	        <name>oss-sonatype</name>
-	        <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-	        <snapshots>
-	            <enabled>true</enabled>
-	        </snapshots>
-	    </repository>
-	</repositories>
+	
 </project>
