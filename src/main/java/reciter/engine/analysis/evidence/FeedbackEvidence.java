@@ -24,4 +24,7 @@ public class FeedbackEvidence {
 	private Double feedbackScoreOrganization;
 	private Double feedbackScoreTargetAuthorName;
 	private Double feedbackScoreYear;
+	private Double feedbackScoreTextSimilarity;
+	private Double feedbackScoreJournalTitleSimilarity;
+	private Double feedbackScoreBibliographicCoupling;
 }
