@@ -19,6 +19,7 @@
 package reciter.model.article;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -215,6 +216,7 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
 
     private int goldStandard;
     private Set<Long> commentsCorrectionsPmids = new HashSet<>();
+    private Map<Long, String> commentsCorrectionsRefTypes = new HashMap<>();
     private List<ReCiterArticleMeshHeading> meshHeadings = new ArrayList<>();
 
     private List<ReCiterAuthor> knownRelationships = new ArrayList<>();
@@ -756,6 +758,14 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
 
     public void setCommentsCorrectionsPmids(Set<Long> commentsCorrectionsPmids) {
         this.commentsCorrectionsPmids = commentsCorrectionsPmids;
+    }
+
+    public Map<Long, String> getCommentsCorrectionsRefTypes() {
+        return commentsCorrectionsRefTypes;
+    }
+
+    public void setCommentsCorrectionsRefTypes(Map<Long, String> commentsCorrectionsRefTypes) {
+        this.commentsCorrectionsRefTypes = commentsCorrectionsRefTypes;
     }
 
     public List<ReCiterArticleMeshHeading> getMeshHeadings() {
