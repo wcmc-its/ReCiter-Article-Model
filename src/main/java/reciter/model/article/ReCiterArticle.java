@@ -240,7 +240,9 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
     private String publicationDateStandardized;
     
     private String datePublicationAddedToEntrez;
-    
+
+    private String datePublicationAddedToPMC;
+
     private String publicationDateDisplay;
     
     
@@ -392,6 +394,14 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
 
 	public void setDatePublicationAddedToEntrez(String datePublicationAddedToEntrez) {
 		this.datePublicationAddedToEntrez = datePublicationAddedToEntrez;
+	}
+
+	public String getDatePublicationAddedToPMC() {
+		return datePublicationAddedToPMC;
+	}
+
+	public void setDatePublicationAddedToPMC(String datePublicationAddedToPMC) {
+		this.datePublicationAddedToPMC = datePublicationAddedToPMC;
 	}
 
 	public String getPublicationDateDisplay() {

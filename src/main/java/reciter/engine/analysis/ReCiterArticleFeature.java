@@ -25,6 +25,7 @@ public class ReCiterArticleFeature {
     private String publicationDateDisplay;
     private String publicationDateStandardized;
     private String datePublicationAddedToEntrez;
+    private String datePublicationAddedToPMC;
     private String doi;
     private ReCiterArticlePublicationType publicationType;
     private Long timesCited;
