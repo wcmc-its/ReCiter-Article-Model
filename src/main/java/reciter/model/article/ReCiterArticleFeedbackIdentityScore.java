@@ -36,6 +36,9 @@ public class ReCiterArticleFeedbackIdentityScore {
 	/** The feedback score keyword. */
 	private double feedbackScoreKeyword;
 	
+	private double feedbackScoreTextSimilarity;
+	private double feedbackScoreJournalTitleSimilarity;
+	
 	/** The feedback score orcid. */
 	private double feedbackScoreOrcid;
 	
@@ -50,6 +53,8 @@ public class ReCiterArticleFeedbackIdentityScore {
 	
 	/** The feedback score year. */
 	private double feedbackScoreYear;
+	
+	private double feedbackScoreBibliographicCoupling;
 	
 	/** The article count score. */
 	private double articleCountScore;
@@ -156,26 +161,26 @@ public class ReCiterArticleFeedbackIdentityScore {
 			double targetAuthorInstitutionalAffiliationMatchTypeScore,
 			double pubmedTargetAuthorInstitutionalAffiliationMatchTypeScore, String userAssertion) {
 		  	
-			this.articleId = articleId;
-			this.articleCountScore = articleCountScore;
-			this.authorCountScore = authorCountScore;
-	        this.discrepancyDegreeYearScore = discrepancyDegreeYearScore;
-	        this.emailMatchScore = emailMatchScore;
-	        this.genderScoreIdentityArticleDiscrepancy = genderScoreIdentityArticleDiscrepancy;
-	        this.grantMatchScore = grantMatchScore;
-	        this.journalSubfieldScore = journalSubfieldScore;
-	        this.nameMatchFirstScore = nameMatchFirstScore;
-	        this.nameMatchLastScore = nameMatchLastScore;
-	        this.nameMatchMiddleScore = nameMatchMiddleScore;
-	        this.nameMatchModifierScore = nameMatchModifierScore;
-	        this.organizationalUnitMatchingScore = organizationalUnitMatchingScore;
-	        this.relationshipPositiveMatchScore = relationshipPositiveMatchScore;
-	        this.relationshipNegativeMatchScore = relationshipNegativeMatchScore; 
-	        this.relationshipIdentityCount = relationshipIdentityCount;
-	        this.scopusNonTargetAuthorInstitutionalAffiliationScore = scopusNonTargetAuthorInstitutionalAffiliationScore;
-	        this.targetAuthorInstitutionalAffiliationMatchTypeScore = targetAuthorInstitutionalAffiliationMatchTypeScore;
-	        this.pubmedTargetAuthorInstitutionalAffiliationMatchTypeScore = pubmedTargetAuthorInstitutionalAffiliationMatchTypeScore;
-	        this.userAssertion = userAssertion;
+		this.articleId = articleId;
+		this.articleCountScore = articleCountScore;
+		this.authorCountScore = authorCountScore;
+        this.discrepancyDegreeYearScore = discrepancyDegreeYearScore;
+        this.emailMatchScore = emailMatchScore;
+        this.genderScoreIdentityArticleDiscrepancy = genderScoreIdentityArticleDiscrepancy;
+        this.grantMatchScore = grantMatchScore;
+        this.journalSubfieldScore = journalSubfieldScore;
+        this.nameMatchFirstScore = nameMatchFirstScore;
+        this.nameMatchLastScore = nameMatchLastScore;
+        this.nameMatchMiddleScore = nameMatchMiddleScore;
+        this.nameMatchModifierScore = nameMatchModifierScore;
+        this.organizationalUnitMatchingScore = organizationalUnitMatchingScore;
+        this.relationshipPositiveMatchScore = relationshipPositiveMatchScore;
+        this.relationshipNegativeMatchScore = relationshipNegativeMatchScore; 
+        this.relationshipIdentityCount = relationshipIdentityCount;
+        this.scopusNonTargetAuthorInstitutionalAffiliationScore = scopusNonTargetAuthorInstitutionalAffiliationScore;
+        this.targetAuthorInstitutionalAffiliationMatchTypeScore = targetAuthorInstitutionalAffiliationMatchTypeScore;
+        this.pubmedTargetAuthorInstitutionalAffiliationMatchTypeScore = pubmedTargetAuthorInstitutionalAffiliationMatchTypeScore;
+        this.userAssertion = userAssertion;
 
 	}
 
@@ -220,8 +225,10 @@ public class ReCiterArticleFeedbackIdentityScore {
 	public ReCiterArticleFeedbackIdentityScore(long articleId, double feedbackScoreCites,
 			double feedbackScoreCoAuthorName, double feedbackScoreEmail, double feedbackScoreInstitution,
 			double feedbackScoreJournal, double feedbackScoreJournalSubField, double feedbackScoreKeyword,
+			double feedbackScoreTextSimilarity, double feedbackScoreJournalTitleSimilarity,
 			double feedbackScoreOrcid, double feedbackScoreOrcidCoAuthor, double feedbackScoreOrganization,
-			double feedbackScoreTargetAuthorName, double feedbackScoreYear, double articleCountScore,double authorCountScore,
+			double feedbackScoreTargetAuthorName, double feedbackScoreYear,
+			double feedbackScoreBibliographicCoupling, double articleCountScore,double authorCountScore,
 			double discrepancyDegreeYearScore, double emailMatchScore, double genderScoreIdentityArticleDiscrepancy,
 			double grantMatchScore, double journalSubfieldScore, double nameMatchFirstScore, double nameMatchLastScore,
 			double nameMatchMiddleScore, double nameMatchModifierScore, double organizationalUnitMatchingScore,
@@ -231,40 +238,43 @@ public class ReCiterArticleFeedbackIdentityScore {
 			double pubmedTargetAuthorInstitutionalAffiliationMatchTypeScore, int countAccepted, int countRejected,
 			String userAssertion) {
 		
-		 	this.articleId = articleId;
-	        this.feedbackScoreCites = feedbackScoreCites;
-	        this.feedbackScoreCoAuthorName = feedbackScoreCoAuthorName;
-	        this.feedbackScoreEmail = feedbackScoreEmail;
-	        this.feedbackScoreInstitution = feedbackScoreInstitution;
-	        this.feedbackScoreJournal = feedbackScoreJournal;
-	        this.feedbackScoreJournalSubField = feedbackScoreJournalSubField;
-	        this.feedbackScoreKeyword = feedbackScoreKeyword;
-	        this.feedbackScoreOrcid = feedbackScoreOrcid;
-	        this.feedbackScoreOrcidCoAuthor = feedbackScoreOrcidCoAuthor;
-	        this.feedbackScoreOrganization = feedbackScoreOrganization;
-	        this.feedbackScoreTargetAuthorName = feedbackScoreTargetAuthorName;
-	        this.feedbackScoreYear = feedbackScoreYear;
-	        this.articleCountScore = articleCountScore;
-	        this.authorCountScore = authorCountScore;
-	        this.discrepancyDegreeYearScore = discrepancyDegreeYearScore;
-	        this.emailMatchScore = emailMatchScore;
-	        this.genderScoreIdentityArticleDiscrepancy = genderScoreIdentityArticleDiscrepancy;
-	        this.grantMatchScore = grantMatchScore;
-	        this.journalSubfieldScore = journalSubfieldScore;
-	        this.nameMatchFirstScore = nameMatchFirstScore;
-	        this.nameMatchLastScore = nameMatchLastScore;
-	        this.nameMatchMiddleScore = nameMatchMiddleScore;
-	        this.nameMatchModifierScore = nameMatchModifierScore;
-	        this.organizationalUnitMatchingScore = organizationalUnitMatchingScore;
-	        this.relationshipPositiveMatchScore = relationshipPositiveMatchScore;
-	        this.relationshipNegativeMatchScore = relationshipNegativeMatchScore; 
-	        this.relationshipIdentityCount = relationshipIdentityCount;
-	        this.scopusNonTargetAuthorInstitutionalAffiliationScore = scopusNonTargetAuthorInstitutionalAffiliationScore;
-	        this.targetAuthorInstitutionalAffiliationMatchTypeScore = targetAuthorInstitutionalAffiliationMatchTypeScore;
-	        this.pubmedTargetAuthorInstitutionalAffiliationMatchTypeScore = pubmedTargetAuthorInstitutionalAffiliationMatchTypeScore;
-	        this.countAccepted = countAccepted;
-	        this.countRejected = countRejected;
-	        this.userAssertion = userAssertion;
+		this.articleId = articleId;
+        this.feedbackScoreCites = feedbackScoreCites;
+        this.feedbackScoreCoAuthorName = feedbackScoreCoAuthorName;
+        this.feedbackScoreEmail = feedbackScoreEmail;
+        this.feedbackScoreInstitution = feedbackScoreInstitution;
+        this.feedbackScoreJournal = feedbackScoreJournal;
+        this.feedbackScoreJournalSubField = feedbackScoreJournalSubField;
+        this.feedbackScoreKeyword = feedbackScoreKeyword;
+        this.feedbackScoreTextSimilarity = feedbackScoreTextSimilarity;
+        this.feedbackScoreJournalTitleSimilarity = feedbackScoreJournalTitleSimilarity;
+        this.feedbackScoreOrcid = feedbackScoreOrcid;
+        this.feedbackScoreOrcidCoAuthor = feedbackScoreOrcidCoAuthor;
+        this.feedbackScoreOrganization = feedbackScoreOrganization;
+        this.feedbackScoreTargetAuthorName = feedbackScoreTargetAuthorName;
+        this.feedbackScoreYear = feedbackScoreYear;
+        this.feedbackScoreBibliographicCoupling = feedbackScoreBibliographicCoupling;
+        this.articleCountScore = articleCountScore;
+        this.authorCountScore = authorCountScore;
+        this.discrepancyDegreeYearScore = discrepancyDegreeYearScore;
+        this.emailMatchScore = emailMatchScore;
+        this.genderScoreIdentityArticleDiscrepancy = genderScoreIdentityArticleDiscrepancy;
+        this.grantMatchScore = grantMatchScore;
+        this.journalSubfieldScore = journalSubfieldScore;
+        this.nameMatchFirstScore = nameMatchFirstScore;
+        this.nameMatchLastScore = nameMatchLastScore;
+        this.nameMatchMiddleScore = nameMatchMiddleScore;
+        this.nameMatchModifierScore = nameMatchModifierScore;
+        this.organizationalUnitMatchingScore = organizationalUnitMatchingScore;
+        this.relationshipPositiveMatchScore = relationshipPositiveMatchScore;
+        this.relationshipNegativeMatchScore = relationshipNegativeMatchScore; 
+        this.relationshipIdentityCount = relationshipIdentityCount;
+        this.scopusNonTargetAuthorInstitutionalAffiliationScore = scopusNonTargetAuthorInstitutionalAffiliationScore;
+        this.targetAuthorInstitutionalAffiliationMatchTypeScore = targetAuthorInstitutionalAffiliationMatchTypeScore;
+        this.pubmedTargetAuthorInstitutionalAffiliationMatchTypeScore = pubmedTargetAuthorInstitutionalAffiliationMatchTypeScore;
+        this.countAccepted = countAccepted;
+        this.countRejected = countRejected;
+        this.userAssertion = userAssertion;
 	        
 	      
 	}

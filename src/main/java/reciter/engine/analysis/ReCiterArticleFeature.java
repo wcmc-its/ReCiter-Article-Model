@@ -46,6 +46,8 @@ public class ReCiterArticleFeature {
     /** The date publication added to entrez. */
     private String datePublicationAddedToEntrez;
     
+    private String datePublicationAddedToPMC;
+    
     /** The doi. */
     private String doi;
     
