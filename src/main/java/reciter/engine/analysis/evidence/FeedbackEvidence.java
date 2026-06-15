@@ -59,4 +59,8 @@ public class FeedbackEvidence {
 
     /** Feedback score based on publication year or other year-based feedback. */
     private Double feedbackScoreYear;
+    
+    private Double feedbackScoreTextSimilarity;
+	private Double feedbackScoreJournalTitleSimilarity;
+	private Double feedbackScoreBibliographicCoupling;
 }

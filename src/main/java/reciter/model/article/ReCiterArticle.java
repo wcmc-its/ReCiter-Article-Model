@@ -19,6 +19,7 @@
 package reciter.model.article;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -123,6 +124,9 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
     /** The cites feedback score. */
     private double citesFeedbackScore;
     
+    /** The BibliographicCoupling feedback score. */
+    private double bibliographicCouplingFeedbackScore;
+    
     /** The email feedback score. */
     private double emailFeedbackScore;
     
@@ -137,6 +141,10 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
     
     /** The year feedback score. */
     private double yearFeedbackScore;
+    
+    private double textSimilarityFeedbackScore;
+    
+    private double journalTitleSimilarityFeedbackScore;
     
     /** The feedback total score. */
     private double feedbackTotalScore;
@@ -168,6 +176,9 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
     /** The exported cites feedback score. */
     private String exportedCitesFeedbackScore;
     
+    /** The exported BibliographicCoupling feedback score. */
+    private String exportedBibliographicCouplingFeedbackScore;
+    
     /** The exported email feedback score. */
     private String exportedEmailFeedbackScore;
     
@@ -182,6 +193,9 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
     
     /** The exported year feedback score. */
     private String exportedYearFeedbackScore; 
+    
+    private String exportedTextSimilarityFeedbackScore;
+    private String exportedJournalTitleSimilarityFeedbackScore;
     
     /** The article feedback scores map list. */
     private List<Map<String,List<ReCiterArticleFeedbackScore>>> articleFeedbackScoresMapList;
@@ -374,6 +388,8 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
     /** The comments corrections pmids. */
     private Set<Long> commentsCorrectionsPmids = new HashSet<>();
     
+    private Map<Long, String> commentsCorrectionsRefTypes = new HashMap<>();
+    
     /** The mesh headings. */
     private List<ReCiterArticleMeshHeading> meshHeadings = new ArrayList<>();
 
@@ -421,6 +437,8 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
     
     /** The date publication added to entrez. */
     private String datePublicationAddedToEntrez;
+    
+    private String datePublicationAddedToPMC;
     
     /** The publication date display. */
     private String publicationDateDisplay;
@@ -764,6 +782,14 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
 	 */
 	public void setDatePublicationAddedToEntrez(String datePublicationAddedToEntrez) {
 		this.datePublicationAddedToEntrez = datePublicationAddedToEntrez;
+	}
+	
+	public String getDatePublicationAddedToPMC() {
+		return datePublicationAddedToPMC;
+	}
+
+	public void setDatePublicationAddedToPMC(String datePublicationAddedToPMC) {
+		this.datePublicationAddedToPMC = datePublicationAddedToPMC;
 	}
 
 	/**
@@ -1529,6 +1555,14 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
      */
     public void setCommentsCorrectionsPmids(Set<Long> commentsCorrectionsPmids) {
         this.commentsCorrectionsPmids = commentsCorrectionsPmids;
+    }
+    
+    public Map<Long, String> getCommentsCorrectionsRefTypes() {
+        return commentsCorrectionsRefTypes;
+    }
+
+    public void setCommentsCorrectionsRefTypes(Map<Long, String> commentsCorrectionsRefTypes) {
+        this.commentsCorrectionsRefTypes = commentsCorrectionsRefTypes;
     }
 
     /**
@@ -2305,6 +2339,14 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
 		this.citesFeedbackScore = citesFeedbackScore;
 	}
 
+	public double getBibliographicCouplingFeedbackScore() {
+		return bibliographicCouplingFeedbackScore;
+	}
+
+	public void setBibliographicCouplingFeedbackScore(double bibliographicCouplingFeedbackScore) {
+		this.bibliographicCouplingFeedbackScore = bibliographicCouplingFeedbackScore;
+	}
+	
 	/**
 	 * Gets the email feedback score.
 	 *
@@ -2402,6 +2444,22 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
 	 */
 	public double getJournalFeedackScore() {
 		return journalFeedackScore;
+	}
+	
+	public double getTextSimilarityFeedbackScore() {
+		return textSimilarityFeedbackScore;
+	}
+
+	public void setTextSimilarityFeedbackScore(double textSimilarityFeedbackScore) {
+		this.textSimilarityFeedbackScore = textSimilarityFeedbackScore;
+	}
+
+	public double getJournalTitleSimilarityFeedbackScore() {
+		return journalTitleSimilarityFeedbackScore;
+	}
+
+	public void setJournalTitleSimilarityFeedbackScore(double journalTitleSimilarityFeedbackScore) {
+		this.journalTitleSimilarityFeedbackScore = journalTitleSimilarityFeedbackScore;
 	}
 
 	/**
@@ -2574,6 +2632,14 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
 	public void setExportedCitesFeedbackScore(String exportedCitesFeedbackScore) {
 		this.exportedCitesFeedbackScore = exportedCitesFeedbackScore;
 	}
+	
+	public String getExportedBibliographicCouplingFeedbackScore() {
+		return exportedBibliographicCouplingFeedbackScore;
+	}
+
+	public void setExportedBibliographicCouplingFeedbackScore(String exportedBibliographicCouplingFeedbackScore) {
+		this.exportedBibliographicCouplingFeedbackScore = exportedBibliographicCouplingFeedbackScore;
+	}
 
 	/**
 	 * Gets the exported email feedback score.
@@ -2663,6 +2729,22 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
 	 */
 	public void setExportedYearFeedbackScore(String exportedYearFeedbackScore) {
 		this.exportedYearFeedbackScore = exportedYearFeedbackScore;
+	}
+	
+	public String getExportedTextSimilarityFeedbackScore() {
+		return exportedTextSimilarityFeedbackScore;
+	}
+
+	public void setExportedTextSimilarityFeedbackScore(String exportedTextSimilarityFeedbackScore) {
+		this.exportedTextSimilarityFeedbackScore = exportedTextSimilarityFeedbackScore;
+	}
+
+	public String getExportedJournalTitleSimilarityFeedbackScore() {
+		return exportedJournalTitleSimilarityFeedbackScore;
+	}
+
+	public void setExportedJournalTitleSimilarityFeedbackScore(String exportedJournalTitleSimilarityFeedbackScore) {
+		this.exportedJournalTitleSimilarityFeedbackScore = exportedJournalTitleSimilarityFeedbackScore;
 	}
 
 	/**
