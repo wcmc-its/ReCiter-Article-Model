@@ -36,7 +36,10 @@ public class ReCiterArticleFeedbackIdentityScore {
 	/** The feedback score keyword. */
 	private double feedbackScoreKeyword;
 	
+	/** The feedback score text similarity. */
 	private double feedbackScoreTextSimilarity;
+	
+	/** The feedback score journal title similarity. */
 	private double feedbackScoreJournalTitleSimilarity;
 	
 	/** The feedback score orcid. */
@@ -54,6 +57,7 @@ public class ReCiterArticleFeedbackIdentityScore {
 	/** The feedback score year. */
 	private double feedbackScoreYear;
 	
+	/** The feedback score bibliographicCoupling. */
 	private double feedbackScoreBibliographicCoupling;
 	
 	/** The article count score. */
