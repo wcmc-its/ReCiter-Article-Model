@@ -199,12 +199,16 @@ public class Analysis {
     }
 
     
-    // --- Getters and setters ---
-
+	/**
+		Getter for TruePos
+	*/
     public int getTruePos() {
         return truePos;
     }
 
+    /**
+		Setter for the TruePos
+	*/
     public void setTruePos(int truePos) {
         this.truePos = truePos;
     }
@@ -273,9 +277,7 @@ public class Analysis {
         this.falsePositiveList = falsePositiveList;
     }
 
-    /**
-	Getter for the True negative List
-    */
+    
     public List<Long> getFalseNegativeList() {
         return falseNegativeList;
     }
