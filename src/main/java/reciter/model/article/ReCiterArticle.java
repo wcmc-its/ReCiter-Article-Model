@@ -142,8 +142,10 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
     /** The year feedback score. */
     private double yearFeedbackScore;
     
+    /** The text similarity feedback score. */
     private double textSimilarityFeedbackScore;
     
+    /** The journal title similarity feedback score. */
     private double journalTitleSimilarityFeedbackScore;
     
     /** The feedback total score. */
@@ -194,7 +196,10 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
     /** The exported year feedback score. */
     private String exportedYearFeedbackScore; 
     
+    /** The exported text similarity feedback score. */
     private String exportedTextSimilarityFeedbackScore;
+    
+    /** The exported journal title similarity feedback score. */
     private String exportedJournalTitleSimilarityFeedbackScore;
     
     /** The article feedback scores map list. */
@@ -320,7 +325,6 @@ public class ReCiterArticle implements Comparable<ReCiterArticle> {
     
     /** The scopus doc id. */
     private String scopusDocId;
-    
 
     /** The known coinvestigator score. */
     private double knownCoinvestigatorScore;
