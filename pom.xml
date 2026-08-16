@@ -104,7 +104,7 @@
 						</additionalJOptions>
 						<encoding>UTF-8</encoding>
 						<links>
-							<link>https://docs.oracle.com/en/java/javase/17/docs/api/</link>
+							<link>https://docs.oracle.com/en/java/javase/21/docs/api/</link>
 						</links>
 					</configuration>
 					<executions>
@@ -261,12 +261,14 @@
         	<artifactId>reciter-scopus-model</artifactId>
         	<version>4.0.0</version>
         </dependency>
-        <dependency>
-    		<groupId>org.springframework.data</groupId>
-    		<artifactId>spring-data-commons-core</artifactId>
-    		<version>1.4.1.RELEASE</version>
+
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-commons</artifactId>
+			<version>4.1.0</version>
+			<scope>compile</scope>
 		</dependency>
-    </dependencies>
+	</dependencies>
     
     <profiles>
 		<!-- GPG Signature on release -->
