@@ -5,7 +5,7 @@
   <version>4.0.0</version>
   <name>ReCiter-Article-Model</name>
   <description>A set of classes representing an identity</description>
-    <url>https://github.com/wcmc-its/ReCiter-Article-Model</url>
+  <url>https://github.com/wcmc-its/ReCiter-Article-Model</url>
     
     <organization>
 		<url>https://github.com/wcmc-its</url>
@@ -34,6 +34,13 @@
 			<organizationUrl>https://github.com/wcmc-its</organizationUrl>
 			<timezone>GMT-5</timezone>
 		</developer>
+		<developer>
+			<name>Veerraju Duppalapudi</name>
+			<email>ved4006@med.cornell.edu</email>
+			<organization>Weill Cornell Medicine ITS</organization>
+			<organizationUrl>https://github.com/wcmc-its</organizationUrl>
+			<timezone>GMT+5.5</timezone>
+		</developer>
 	</developers>
     
     <scm>
@@ -43,24 +50,12 @@
 		<tag>4.0.0</tag>
 	</scm>
     
-    <distributionManagement>
-		<snapshotRepository>
-			<id>ossrh</id>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-		</snapshotRepository>
-		<repository>
-			<id>ossrh</id>
-			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-		</repository>
-	</distributionManagement>
-	
     <properties>
         <version.maven-release-plugin>3.1.1</version.maven-release-plugin>
         <version.maven-gpg-plugin>3.2.7</version.maven-gpg-plugin>
         <version.maven-source-plugin>3.4.0</version.maven-source-plugin>
 		<version.maven-javadoc-plugin>3.11.2</version.maven-javadoc-plugin>
 		<version.maven-scm-provider-gitexe>2.1.0</version.maven-scm-provider-gitexe>
-    	<!-- Generic properties -->
 		<java.version>21</java.version>
 		<corretto.version>21</corretto.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -69,30 +64,29 @@
     <build>
     <sourceDirectory>src/main/java</sourceDirectory>
 	<plugins>
-			<!-- Apply the plugin directly here -->
 			<plugin>
-			  <groupId>org.sonatype.central</groupId>
-			  <artifactId>central-publishing-maven-plugin</artifactId>
-			  <version>0.8.0</version>
-			  <extensions>true</extensions>
-			  <configuration>
-				<publishingServerId>central</publishingServerId>
-			  </configuration>
+				<groupId>org.sonatype.central</groupId>
+				<artifactId>central-publishing-maven-plugin</artifactId>
+				<version>0.8.0</version>
+				<extensions>true</extensions>
+				<configuration>
+					<publishingServerId>central</publishingServerId>
+				</configuration>
 			</plugin>
 			<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-source-plugin</artifactId>
-					<version>${version.maven-source-plugin}</version>
-					<executions>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>${version.maven-source-plugin}</version>
+				<executions>
 					<execution>
-					<id>attach-sources</id>
-					<phase>package</phase>
-					<goals>
-					<goal>jar</goal>
-					</goals>
+						<id>attach-sources</id>
+						<phase>package</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
 					</execution>
-					</executions>
-				</plugin>
+				</executions>
+			</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-javadoc-plugin</artifactId>
@@ -202,32 +196,47 @@
 					<autoReleaseAfterClose>true</autoReleaseAfterClose>
 					</configuration>
 				</plugin>
-	            <plugin>
-	                <groupId>org.openapitools</groupId>
-	                <artifactId>openapi-generator-maven-plugin</artifactId>
-	                <version>7.3.0</version>
-	                <executions>
-	                    <execution>
-	                        <id>generate-spring-java-client</id>
-	                        <phase>generate-sources</phase>
-	                        <goals>
-	                            <goal>generate</goal>
-	                        </goals>
-	                        <configuration>
-	                            <inputSpec>${yaml.file}</inputSpec>
-	                            <configOptions>
-	                                <sourceFolder>${generated-sources-java-path}</sourceFolder>
-	                            </configOptions>
-	                            <output>${generated-sources-path}</output>
-	                            <language>java</language>
-	                            <modelPackage>reciter.model.pubmed</modelPackage>
-	                        </configuration>
-	                    </execution>
-	                </executions>
-	            </plugin>
+				<plugin>
+					<groupId>org.openapitools</groupId>
+					<artifactId>openapi-generator-maven-plugin</artifactId>
+					<version>7.25.0</version>
+					<executions>
+						<execution>
+							<id>generate-spring-java-client</id>
+							<phase>generate-sources</phase>
+							<goals>
+								<goal>generate</goal>
+							</goals>
+							<configuration>
+								<inputSpec>${yaml.file}</inputSpec>
+								<configOptions>
+									<sourceFolder>${generated-sources-java-path}</sourceFolder>
+									<useSpringBoot4>true</useSpringBoot4>
+                   					<useJackson3>true</useJackson3>
+								</configOptions>
+								<output>${generated-sources-path}</output>
+								<generatorName>java</generatorName>
+								<modelPackage>reciter.model.pubmed</modelPackage>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
 	        </plugins>
         </pluginManagement>
     </build>
+    
+    <dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>4.0.8</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
     <dependencies>
 		<dependency>
 			<groupId>software.amazon.awssdk</groupId>
@@ -243,7 +252,6 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.32</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -265,8 +273,7 @@
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-commons</artifactId>
-			<version>4.1.0</version>
-			<scope>compile</scope>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
     
