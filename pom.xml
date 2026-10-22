@@ -47,7 +47,7 @@
 		<connection>scm:git:git://github.com/wcmc-its/ReCiter-Article-Model.git</connection>
 		<developerConnection>scm:git:git@github.com:wcmc-its/ReCiter-Article-Model.git</developerConnection>
 		<url>https://github.com/wcmc-its/ReCiter-Article-Model</url>
-		<tag>4.0.0-SNAPSHOT</tag>
+		<tag>4.0.0</tag>
 	</scm>
     
     <properties>
