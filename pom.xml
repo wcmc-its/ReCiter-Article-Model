@@ -56,11 +56,11 @@
 		<version.aws-sdk>2.47.5</version.aws-sdk>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<version.maven-release-plugin>3.1.1</version.maven-release-plugin>
-		<version.maven-gpg-plugin>3.2.7</version.maven-gpg-plugin>
+		<version.maven-release-plugin>3.3.1</version.maven-release-plugin>
+		<version.maven-gpg-plugin>3.2.8</version.maven-gpg-plugin>
 		<version.maven-source-plugin>3.4.0</version.maven-source-plugin>
-		<version.maven-javadoc-plugin>3.11.2</version.maven-javadoc-plugin>
-		<version.maven-scm-provider-gitexe>2.1.0</version.maven-scm-provider-gitexe>
+		<version.maven-javadoc-plugin>3.12.0</version.maven-javadoc-plugin>
+		<version.maven-scm-provider-gitexe>2.2.1</version.maven-scm-provider-gitexe>
 	</properties>
 	
 	<repositories>
@@ -82,7 +82,7 @@
 			<plugin>
 				<groupId>org.sonatype.central</groupId>
 				<artifactId>central-publishing-maven-plugin</artifactId>
-				<version>0.11.0</version>
+				<version>0.12.0</version>
 				<extensions>true</extensions>
 				<configuration>
 					<publishingServerId>central</publishingServerId>
